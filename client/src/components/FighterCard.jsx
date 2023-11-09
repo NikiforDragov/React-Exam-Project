@@ -28,6 +28,7 @@ const CardGrid = () => {
     { title: 'Card 3', content: 'This is the content of Card 3' },
     { title: 'Card 3', content: 'This is the content of Card 3' },
     { title: 'Card 3', content: 'This is the content of Card 3' },
+    { title: 'Card 3', content: 'This is the content of Card 3' },
   ];
 
   return (
