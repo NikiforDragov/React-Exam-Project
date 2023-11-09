@@ -1,6 +1,9 @@
 export default function Footer() {
     return (
-        <footer className='bg-dark text-light py-3'>
+        <footer
+            className='bg-dark text-light py-3 footer'
+            style={{ marginTop: '2em' }}
+        >
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6'>
