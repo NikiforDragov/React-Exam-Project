@@ -12,13 +12,13 @@ function App() {
         minHeight: '100vh',
     };
     return (
-        <>
+        <div style={styles}>
             <Header />
-            <div className='container-fluid d-flex flex-column' style={styles}>
+            <div className='container-fluid d-flex flex-column' style={{minHeight: '100vh'}}>
                 <FighterCard />
             </div>
             <Footer />
-        </>
+        </div>
     );
 }
 
