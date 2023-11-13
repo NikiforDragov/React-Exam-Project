@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FighterCard from './components/FighterCard';
@@ -14,7 +16,10 @@ function App() {
     return (
         <div style={styles}>
             <Header />
-            <div className='container-fluid d-flex flex-column' style={{minHeight: '100vh'}}>
+            <div
+                className='container-fluid d-flex flex-column'
+                style={{ minHeight: '100vh' }}
+            >
                 <FighterCard />
             </div>
             <Footer />
