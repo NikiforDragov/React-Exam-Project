@@ -1,0 +1,13 @@
+.main {
+    min-height: 100vh;
+}
+.main * {
+    color: white;
+}
+
+#root {
+    background-image: url('src/assets/cover1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
