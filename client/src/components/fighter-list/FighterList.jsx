@@ -1,8 +1,9 @@
 import React from 'react';
 
 import {Container,Row} from 'react-bootstrap';
-import './fighterListStyles.css';
 import FighterCard from './fighter-card/FighterCard';
+
+import './fighterListStyles.css';
 
 const FighterList = () => {
     const cardData = [
