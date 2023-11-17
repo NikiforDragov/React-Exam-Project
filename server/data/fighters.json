@@ -1,0 +1,16 @@
+{
+    "mockFighter1": {
+        "_id": "mockFighter1",
+        "firstName": "Conor",
+        "lastName": "Mcgregor",
+        "age": "30",
+        "country": "Ireland",
+        "createdAt": "2023-11-01T07:22:00.358Z",
+        "updatedAt": "2023-11-01T07:22:00.358Z",
+        "imageUrl": "https://images.daznservices.com/di/library/DAZN_News/a3/49/conor-mcgregor_wx0eeamnxrs51rpr1b7n9o8gw.jpg?t=-1883069318&w=800",
+        "category": "Lightweight",
+        "weight": "80kg",
+        "height": "180cm",
+        "fightingStyle": "MMA"
+      }
+}
