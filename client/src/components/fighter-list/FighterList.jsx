@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Card, Container, Button, Row, Col } from 'react-bootstrap';
+import {Container,Row} from 'react-bootstrap';
 import './fighterListStyles.css';
 import FighterCard from './fighter-card/FighterCard';
 
-const FightersList = () => {
+const FighterList = () => {
     const cardData = [
         {
             _id: 'Card 1',
@@ -55,4 +55,4 @@ const FightersList = () => {
     );
 };
 
-export default FightersList;
+export default FighterList;

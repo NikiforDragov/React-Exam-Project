@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import FighterList from './components/fighters-list/FightersList';
+import FighterList from './components/fighter-list/FighterList';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
