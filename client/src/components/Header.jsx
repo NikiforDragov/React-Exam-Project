@@ -21,6 +21,7 @@ export default function Header() {
                     <Nav className='me-auto'>
                         <Nav.Link as={Link} to='/'>Home</Nav.Link>
                         <Nav.Link as={Link} to='/fighters'>All fighters</Nav.Link>
+                        <Nav.Link as={Link} to='/fighters/create'>Create fighter</Nav.Link>
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to='/users/login'>Login</Nav.Link>
