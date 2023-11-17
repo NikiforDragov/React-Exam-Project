@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import FighterCard from './components/FighterCard';
+import FighterList from './components/fighters-list/FightersList';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -16,7 +16,7 @@ function App() {
             <div className='main'>
                 <Routes>
                     <Route path='/' element={<Home />}></Route>
-                    <Route path='/fighters' element={<FighterCard />}></Route>
+                    <Route path='/fighters' element={<FighterList />}></Route>
                     <Route path='/users/login' element={<Login />}></Route>
                     <Route path='/users/register' element={<Register />}></Route>
                 </Routes>
