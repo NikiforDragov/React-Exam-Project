@@ -1,17 +1,21 @@
-import { Card, Button, Col } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
 
-export default function FighterCard(cardData) {
+export default function FighterCard({
+    _id,
+    imageUrl,
+    firstName,
+    lastName,
+    age,
+}) {
     return (
-        <Col key={cardData._id} md={4}>
+        <Col key={_id} md={4}>
             <Card className='custom-card'>
-                <Card.Img
-                    variant='top'
-                    src={cardData.imgUrl}
-                    className='card-image'
-                />
+                <Card.Img variant='top' src={imageUrl} className='card-image' />
                 <Card.Body>
-                    <Card.Title>{cardData.title}</Card.Title>
-                    <Card.Text>{cardData.content}</Card.Text>
+                    <Card.Title>{`${firstName} ${lastName}`}</Card.Title>
+                    <Card.Text>{age}</Card.Text>
                     <Button variant='primary'>Details</Button>
                 </Card.Body>
             </Card>

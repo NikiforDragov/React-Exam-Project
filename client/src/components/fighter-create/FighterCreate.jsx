@@ -5,8 +5,7 @@ import * as fighterService from '../../services/fighterService';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
-import { Container, ListGroup } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 
 import styles from './fighterCreate.module.css';
 
