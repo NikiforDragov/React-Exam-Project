@@ -1,10 +1,14 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import * as fighterService from '../../services/fighterService';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { Container, ListGroup } from 'react-bootstrap';
 
 import styles from './fighterCreate.module.css';
-import { useState } from 'react';
 
 const formInitialState = {
     firstName: '',
@@ -21,6 +25,8 @@ const formInitialState = {
 export default function FighterCreate() {
     const [formValues, setFormValues] = useState(formInitialState);
 
+    const navigate = useNavigate();
+
     const changeHandler = (e) => {
         setFormValues((state) => ({
             ...state,
@@ -28,9 +34,21 @@ export default function FighterCreate() {
         }));
     };
 
+    const createFighterSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            await fighterService.create(formValues);
+
+            navigate('/fighters');
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <Container className={styles.container}>
-            <Form>
+            <Form onSubmit={createFighterSubmitHandler}>
                 <Form.Group className='mb-3' controlId='firstName'>
                     <Form.Label>First Name:</Form.Label>
                     <Form.Control
