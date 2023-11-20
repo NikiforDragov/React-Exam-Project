@@ -1,9 +1,6 @@
 .main {
     min-height: 100vh;
 }
-.main * {
-    /* color: white; */
-}
 
 #root {
     background-image: url('src/assets/cover1.jpg');
