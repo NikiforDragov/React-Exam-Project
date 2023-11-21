@@ -15,16 +15,26 @@ export default function Header() {
             style={{ marginBottom: '2em' }}
         >
             <Container>
-                <Navbar.Brand as={Link} to='/'>Fighters</Navbar.Brand>
+                <Navbar.Brand as={Link} to='/'>
+                    Fighters
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className='me-auto'>
-                        <Nav.Link as={Link} to='/'>Home</Nav.Link>
-                        <Nav.Link as={Link} to='/fighters'>All fighters</Nav.Link>
-                        <Nav.Link as={Link} to='/fighters/create'>Create fighter</Nav.Link>
+                        <Nav.Link as={Link} to='/'>
+                            Home
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/fighters'>
+                            All fighters
+                        </Nav.Link>
+                        <Nav.Link as={Link} to='/fighters/create'>
+                            Create fighter
+                        </Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link as={Link} to='/users/login'>Login</Nav.Link>
+                        <Nav.Link as={Link} to='/users/login'>
+                            Login
+                        </Nav.Link>
                         <Nav.Link eventKey={2} as={Link} to='/users/register'>
                             Register
                         </Nav.Link>

@@ -2,6 +2,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
+import {Link} from 'react-router-dom';
+
 export default function FighterCard({
     _id,
     imageUrl,
@@ -16,7 +18,7 @@ export default function FighterCard({
                 <Card.Body>
                     <Card.Title>{`${firstName} ${lastName}`}</Card.Title>
                     <Card.Text>{age}</Card.Text>
-                    <Button variant='primary'>Details</Button>
+                    <Button as={Link} to={`/fighters/${_id}/details`} variant='primary'>Details</Button>
                 </Card.Body>
             </Card>
         </Col>
