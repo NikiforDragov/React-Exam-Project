@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
-import styles from './fighterCreate.module.css';
+import styles from './FighterCreate.module.css';
 
 const formInitialState = {
     firstName: '',
