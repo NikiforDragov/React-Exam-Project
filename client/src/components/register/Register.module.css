@@ -1,0 +1,23 @@
+.formContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.buttonContainer {    
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    width: 400px;
+    padding: 2em 1em 2em 1em;
+    background-color: #a39393;
+    border: 2px solid black;
+    border-radius: 1.5em;
+}
+
+.link {
+    color: white;
+}
