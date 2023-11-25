@@ -7,7 +7,7 @@ import FighterList from './components/fighter-list/FighterList';
 import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterDetails from './components/fighter-details/FighterDetails';
 import Login from './components/login/Login';
-import Register from './components/Register';
+import Register from './components/register/Register';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
