@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function Header() {
     return (
@@ -35,7 +34,7 @@ export default function Header() {
                         <Nav.Link as={Link} to='/users/login'>
                             Login
                         </Nav.Link>
-                        <Nav.Link eventKey={2} as={Link} to='/users/register'>
+                        <Nav.Link  as={Link} to='/users/register'>
                             Register
                         </Nav.Link>
                     </Nav>
