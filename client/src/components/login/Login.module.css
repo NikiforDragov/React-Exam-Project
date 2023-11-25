@@ -1,0 +1,14 @@
+.formContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 400px;
+    padding: 2em 1em 2em 1em;
+    background-color: #a39393;
+    border: 2px solid black;
+    border-radius: 1.5em;
+}
