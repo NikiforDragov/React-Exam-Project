@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import FighterList from './components/fighter-list/FighterList';
 import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterDetails from './components/fighter-details/FighterDetails';
-import Login from './components/Login';
+import Login from './components/login/Login';
 import Register from './components/Register';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,10 +19,19 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />}></Route>
                     <Route path='/fighters' element={<FighterList />}></Route>
-                    <Route path='/fighters/create' element={<FighterCreate />}></Route>
-                    <Route path='/fighters/:fighterId/details' element={<FighterDetails />}></Route>
+                    <Route
+                        path='/fighters/create'
+                        element={<FighterCreate />}
+                    ></Route>
+                    <Route
+                        path='/fighters/:fighterId/details'
+                        element={<FighterDetails />}
+                    ></Route>
                     <Route path='/users/login' element={<Login />}></Route>
-                    <Route path='/users/register' element={<Register />}></Route>
+                    <Route
+                        path='/users/register'
+                        element={<Register />}
+                    ></Route>
                 </Routes>
             </div>
             <Footer />
