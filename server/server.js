@@ -1350,6 +1350,7 @@
                 "updatedAt": "2023-11-01T07:22:00.358Z",
                 "imageUrl": "https://images.daznservices.com/di/library/DAZN_News/a3/49/conor-mcgregor_wx0eeamnxrs51rpr1b7n9o8gw.jpg?t=-1883069318&w=800",
                 "category": "Lightweight",
+                "description": "Conor Anthony McGregor (born 14 July 1988) is an Irish professional mixed martial artist and professional boxer. He is a former Ultimate Fighting Championship (UFC) Featherweight and Lightweight Champion, becoming the first UFC fighter to hold UFC championships in two weight classes simultaneously.",
                 "fightingStyle": "MMA"
             },
             "f8be19bf-5ae7-4db9-8354-e420fb2c830c": {
@@ -1357,9 +1358,10 @@
                 "fighterName": "Niki Dragov",
                 "age": "24",
                 "country": "Bulgaria",
-                "fightingStyle": "Kickboxing",
+                "imageUrl": "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg",
                 "category": "MiddleWeight",
-                "imageUrl": "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg"
+                "description": "Stipe Miocic (born August 19, 1982) is an American professional mixed martial artist. He currently competes in the Heavyweight division in the Ultimate Fighting Championship (UFC), where he is a former two time UFC Heavyweight Champion. As of November 14, 2023, he is #4 in the UFC heavyweight rankings.",
+                "fightingStyle": "Kickboxing"
             }
         }
     };
