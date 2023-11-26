@@ -12,9 +12,9 @@ import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterDetails from './components/fighter-details/FighterDetails';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Logout from './components/logout/Logout';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Logout from './components/logout/Logout';
 
 function App() {
     const navigate = useNavigate();
