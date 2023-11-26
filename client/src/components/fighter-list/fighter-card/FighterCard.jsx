@@ -7,8 +7,7 @@ import {Link} from 'react-router-dom';
 export default function FighterCard({
     _id,
     imageUrl,
-    firstName,
-    lastName,
+    fighterName,
     age,
 }) {
     return (
@@ -16,7 +15,7 @@ export default function FighterCard({
             <Card className='custom-card'>
                 <Card.Img variant='top' src={imageUrl} className='card-image' />
                 <Card.Body>
-                    <Card.Title>{`${firstName} ${lastName}`}</Card.Title>
+                    <Card.Title>{`${fighterName}`}</Card.Title>
                     <Card.Text>{age}</Card.Text>
                     <Button as={Link} to={`/fighters/${_id}/details`} variant='primary'>Details</Button>
                 </Card.Body>
