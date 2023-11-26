@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
 import AuthContext from '../../contexts/authContext';
+import { Path } from '../../constants/paths';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -25,14 +26,14 @@ export default function Header() {
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className='me-auto'>
-                        <Nav.Link as={Link} to='/'>
+                        <Nav.Link as={Link} to={Path.HOME}>
                             Home
                         </Nav.Link>
-                        <Nav.Link as={Link} to='/fighters'>
+                        <Nav.Link as={Link} to={Path.ALL_FIGHTERS}>
                             All fighters
                         </Nav.Link>
                         {isAuthenticated && (
-                            <Nav.Link as={Link} to='/fighters/create'>
+                            <Nav.Link as={Link} to={Path.CREATE_FIGHTER}>
                                 Create fighter
                             </Nav.Link>
                         )}
@@ -43,17 +44,17 @@ export default function Header() {
                                 <Nav.Link as={Link} to='/users/profile'>
                                     {`${email}'s Profile`}
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/users/logout'>
+                                <Nav.Link as={Link} to={Path.LOGOUT}>
                                     Logout
                                 </Nav.Link>
                             </>
                         )}
                         {!isAuthenticated && (
                             <>
-                                <Nav.Link as={Link} to='/users/login'>
+                                <Nav.Link as={Link} to={Path.LOGIN}>
                                     Login
                                 </Nav.Link>
-                                <Nav.Link as={Link} to='/users/register'>
+                                <Nav.Link as={Link} to={Path.REGISTER}>
                                     Register
                                 </Nav.Link>
                             </>

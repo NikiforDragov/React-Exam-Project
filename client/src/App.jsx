@@ -3,10 +3,11 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import AuthContext from './contexts/authContext';
 import * as authService from './services/authService';
+import { Path } from './constants/paths';
 
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Header from './components/header/Header';
-import Footer from './components/Footer';
+import Footer from './components/footer/Footer';
 import FighterList from './components/fighter-list/FighterList';
 import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterDetails from './components/fighter-details/FighterDetails';
@@ -62,28 +63,25 @@ function App() {
                 <Header />
                 <div className='main'>
                     <Routes>
-                        <Route path='/' element={<Home />}></Route>
+                        <Route path={Path.HOME} element={<Home />}></Route>
                         <Route
-                            path='/fighters'
+                            path={Path.ALL_FIGHTERS}
                             element={<FighterList />}
                         ></Route>
                         <Route
-                            path='/fighters/create'
+                            path={Path.CREATE_FIGHTER}
                             element={<FighterCreate />}
                         ></Route>
                         <Route
-                            path='/fighters/:fighterId/details'
+                            path={Path.FIGHTER_DETAILS}
                             element={<FighterDetails />}
                         ></Route>
-                        <Route path='/users/login' element={<Login />}></Route>
+                        <Route path={Path.LOGIN} element={<Login />}></Route>
                         <Route
-                            path='/users/register'
+                            path={Path.REGISTER}
                             element={<Register />}
                         ></Route>
-                        <Route
-                            path='/users/logout'
-                            element={<Logout />}
-                        ></Route>
+                        <Route path={Path.LOGOUT} element={<Logout />}></Route>
                     </Routes>
                 </div>
                 <Footer />
