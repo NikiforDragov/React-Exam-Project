@@ -1339,7 +1339,30 @@
     	sessions: {
     	}
     };
-    var seedData = {};
+    var seedData = {
+        fighters: {
+            "mockFighter1": {
+                "_id": "mockFighter1",
+                "fighterName": "Conor Mcgregor",
+                "age": "30",
+                "country": "Ireland",
+                "createdAt": "2023-11-01T07:22:00.358Z",
+                "updatedAt": "2023-11-01T07:22:00.358Z",
+                "imageUrl": "https://images.daznservices.com/di/library/DAZN_News/a3/49/conor-mcgregor_wx0eeamnxrs51rpr1b7n9o8gw.jpg?t=-1883069318&w=800",
+                "category": "Lightweight",
+                "fightingStyle": "MMA"
+            },
+            "f8be19bf-5ae7-4db9-8354-e420fb2c830c": {
+                "_id": "f8be19bf-5ae7-4db9-8354-e420fb2c830c",
+                "fighterName": "Niki Dragov",
+                "age": "24",
+                "country": "Bulgaria",
+                "fightingStyle": "Kickboxing",
+                "category": "MiddleWeight",
+                "imageUrl": "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg"
+            }
+        }
+    };
     var rules$1 = {
     	users: {
     		".create": false,
