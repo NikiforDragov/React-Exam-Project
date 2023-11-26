@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/authContext';
-import * as authService from './services/authService';
 import { Path } from './constants/paths';
 
 import Home from './components/home/Home';
@@ -19,47 +17,8 @@ import NotFound from './components/not-found/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-    const navigate = useNavigate();
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken');
-        return {};
-    });
-
-    const loginSubmitHandler = async ({ email, password }) => {
-        const result = await authService.login(email, password);
-
-        setAuth(result);
-
-        localStorage.setItem('accessToken', result.accessToken);
-
-        navigate('/');
-    };
-
-    const registerSubmitHandler = async ({ email, password }) => {
-        const result = await authService.register(email, password);
-
-        setAuth(result);
-
-        localStorage.setItem('accessToken', result.accessToken);
-
-        navigate('/');
-    };
-
-    const logoutHandler = () => {
-        setAuth({});
-        localStorage.removeItem('accessToken');
-    };
-
-    const values = {
-        loginSubmitHandler,
-        registerSubmitHandler,
-        logoutHandler,
-        email: auth.email,
-        isAuthenticated: !!auth.accessToken,
-    };
-
     return (
-        <AuthProvider values={values}>
+        <AuthProvider>
             <>
                 <Header />
                 <div className='main'>
