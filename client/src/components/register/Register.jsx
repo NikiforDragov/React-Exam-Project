@@ -5,40 +5,29 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
 import styles from './Register.module.css';
-import { useState } from 'react';
-
-const formInitialState = {
-    email: '',
-    password: '',
-    confirmPassword: '',
-};
+import useForm from '../../hooks/useForm';
+import { useContext } from 'react';
+import AuthContext from '../../contexts/authContext';
 
 export default function Register() {
-    const [registerValues, setRegisterValues] = useState(formInitialState);
-
-    const changeHandler = (e) => {
-        setRegisterValues((state) => ({
-            ...state,
-            [e.target.name]: e.target.value,
-        }));
-    };
-
-    const registerSubmitHandler = (e) => {
-        e.preventDefault();
-
-        console.log(registerValues);
-    };
+    const { registerSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
 
     return (
         <Container className={styles.formContainer}>
-            <Form className={styles.form} onSubmit={registerSubmitHandler}>
+            <Form className={styles.form} onSubmit={onSubmit}>
                 <Form.Group className='mb-3' controlId='formEmail'>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
                         type='email'
                         name='email'
                         placeholder='Enter email'
-                        onChange={changeHandler}
+                        value={values.email}
+                        onChange={onChange}
                     />
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formPassword'>
@@ -47,7 +36,8 @@ export default function Register() {
                         type='password'
                         name='password'
                         placeholder='Password'
-                        onChange={changeHandler}
+                        value={values.password}
+                        onChange={onChange}
                     />
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formConfirmPassword'>
@@ -56,7 +46,8 @@ export default function Register() {
                         type='password'
                         name='confirmPassword'
                         placeholder='Confirm Password'
-                        onChange={changeHandler}
+                        value={values.confirmPassword}
+                        onChange={onChange}
                     />
                 </Form.Group>
                 <div className={styles.buttonContainer}>
