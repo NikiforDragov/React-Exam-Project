@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 export default function Header() {
-    const { isAuthenticated, username } = useContext(AuthContext);
+    const { isAuthenticated, email } = useContext(AuthContext);
 
     return (
         <Navbar
@@ -41,7 +41,7 @@ export default function Header() {
                         {isAuthenticated && (
                             <>
                                 <Nav.Link as={Link} to='/users/profile'>
-                                    {`${username}'s Profile`}
+                                    {`${email}'s Profile`}
                                 </Nav.Link>
                                 <Nav.Link as={Link} to='/users/logout'>
                                     Logout
