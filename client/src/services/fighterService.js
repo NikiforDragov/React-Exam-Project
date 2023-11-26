@@ -8,6 +8,12 @@ export const getAll = async () => {
     return result;
 };
 
+export const getOne = async (fighterId) => {
+    const result = await request.get(`${baseUrl}/${fighterId}`);
+
+    return result;
+};
+
 export const create = async ({
     fighterName,
     age,
