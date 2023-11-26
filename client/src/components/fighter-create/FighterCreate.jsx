@@ -10,15 +10,13 @@ import Container from 'react-bootstrap/Container';
 import styles from './FighterCreate.module.css';
 
 const formInitialState = {
-    firstName: '',
-    lastName: '',
+    fighterName: '',
     age: '',
     country: '',
     fightingStyle: '',
     category: '',
     imageUrl: '',
-    weight: '',
-    height: '',
+    description: '',
 };
 
 export default function FighterCreate() {
@@ -48,28 +46,18 @@ export default function FighterCreate() {
     return (
         <Container className={styles.container}>
             <Form onSubmit={createFighterSubmitHandler}>
-                <Form.Group className='mb-3' controlId='firstName'>
-                    <Form.Label>First Name:</Form.Label>
+                <Form.Group className='mb-3' controlId='fighterName'>
+                    <Form.Label>Fighter Name:</Form.Label>
                     <Form.Control
                         type='text'
-                        name='firstName'
-                        placeholder='First name'
-                        value={formValues.firstName}
-                        onChange={changeHandler}
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='lastName'>
-                    <Form.Label>Last Name:</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='lastName'
-                        placeholder='Last name'
-                        value={formValues.lastName}
+                        name='fighterName'
+                        placeholder='Fighter name'
+                        value={formValues.fighterName}
                         onChange={changeHandler}
                     />
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='age'>
-                    <Form.Label>Age</Form.Label>
+                    <Form.Label>Age:</Form.Label>
                     <Form.Control
                         type='number'
                         name='age'
@@ -118,27 +106,16 @@ export default function FighterCreate() {
                         placeholder='https://'
                     />
                 </Form.Group>
-                <Form.Group className='mb-3' controlId='weight'>
-                    <Form.Label>Weight:</Form.Label>
+                <Form.Group controlId='description'>
+                    <Form.Label>Description:</Form.Label>
                     <Form.Control
-                        type='text'
-                        name='weight'
-                        value={formValues.weight}
+                        as='textarea'
+                        name='description'
+                        rows={3}
+                        value={formValues.description}
                         onChange={changeHandler}
-                        placeholder='Weight'
                     />
                 </Form.Group>
-                <Form.Group className='mb-3' controlId='height'>
-                    <Form.Label>Height:</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name='height'
-                        value={formValues.height}
-                        onChange={changeHandler}
-                        placeholder='Height'
-                    />
-                </Form.Group>
-
                 <Button variant='dark' type='submit'>
                     Submit
                 </Button>
