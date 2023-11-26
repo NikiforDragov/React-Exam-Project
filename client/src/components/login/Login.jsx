@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import AuthContext from '../../contexts/authContext';
 
+import { loginFormKeys } from '../../constants/formKeys';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -13,8 +14,8 @@ import styles from './Login.module.css';
 export default function Login() {
     const { loginSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        email: '',
-        password: '',
+        [loginFormKeys.email]: '',
+        [loginFormKeys.password]: '',
     });
 
     return (
@@ -24,7 +25,7 @@ export default function Login() {
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
                         type='email'
-                        name='email'
+                        name={loginFormKeys.email}
                         value={values.email}
                         onChange={onChange}
                         placeholder='Enter email'
@@ -34,7 +35,7 @@ export default function Login() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type='password'
-                        name='password'
+                        name={loginFormKeys.password}
                         value={values.password}
                         onChange={onChange}
                         placeholder='Password'

@@ -1,20 +1,22 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+
+import useForm from '../../hooks/useForm';
+import AuthContext from '../../contexts/authContext';
+import { registerFormKeys } from '../../constants/formKeys';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
 import styles from './Register.module.css';
-import useForm from '../../hooks/useForm';
-import { useContext } from 'react';
-import AuthContext from '../../contexts/authContext';
 
 export default function Register() {
     const { registerSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
-        email: '',
-        password: '',
-        confirmPassword: '',
+        [registerFormKeys.email]: '',
+        [registerFormKeys.password]: '',
+        [registerFormKeys.confirmPassword]: '',
     });
 
     return (
@@ -24,7 +26,7 @@ export default function Register() {
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
                         type='email'
-                        name='email'
+                        name={registerFormKeys.email}
                         placeholder='Enter email'
                         value={values.email}
                         onChange={onChange}
@@ -34,7 +36,7 @@ export default function Register() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type='password'
-                        name='password'
+                        name={registerFormKeys.password}
                         placeholder='Password'
                         value={values.password}
                         onChange={onChange}
@@ -44,7 +46,7 @@ export default function Register() {
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                         type='password'
-                        name='confirmPassword'
+                        name={registerFormKeys.confirmPassword}
                         placeholder='Confirm Password'
                         value={values.confirmPassword}
                         onChange={onChange}

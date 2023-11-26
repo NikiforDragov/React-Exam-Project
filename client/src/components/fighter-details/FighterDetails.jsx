@@ -25,10 +25,10 @@ export default function FighterDetails() {
                 <Card.Text>{fighter.description}</Card.Text>
             </Card.Body>
             <ListGroup className='list-group-flush'>
-                <ListGroup.Item>{fighter.age}</ListGroup.Item>
-                <ListGroup.Item>{fighter.fightingStyle}</ListGroup.Item>
-                <ListGroup.Item>{fighter.category}</ListGroup.Item>
-                <ListGroup.Item>{fighter.country}</ListGroup.Item>
+                <ListGroup.Item>Age: {fighter.age}</ListGroup.Item>
+                <ListGroup.Item>Fighting style: {fighter.fightingStyle}</ListGroup.Item>
+                <ListGroup.Item>Category: {fighter.category}</ListGroup.Item>
+                <ListGroup.Item>Country: {fighter.country}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
                 <Card.Link as={Link} to='/fighters'>

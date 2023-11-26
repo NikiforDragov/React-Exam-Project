@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as fighterService from '../../services/fighterService';
+import { createFormKeys } from '../../constants/formKeys';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -10,13 +11,13 @@ import Container from 'react-bootstrap/Container';
 import styles from './FighterCreate.module.css';
 
 const formInitialState = {
-    fighterName: '',
-    age: '',
-    country: '',
-    fightingStyle: '',
-    category: '',
-    imageUrl: '',
-    description: '',
+    [createFormKeys.fighterName]: '',
+    [createFormKeys.age]: '',
+    [createFormKeys.country]: '',
+    [createFormKeys.fightingStyle]: '',
+    [createFormKeys.category]: '',
+    [createFormKeys.imageUrl]: '',
+    [createFormKeys.description]: '',
 };
 
 export default function FighterCreate() {
@@ -50,7 +51,7 @@ export default function FighterCreate() {
                     <Form.Label>Fighter Name:</Form.Label>
                     <Form.Control
                         type='text'
-                        name='fighterName'
+                        name={createFormKeys.fighterName}
                         placeholder='Fighter name'
                         value={formValues.fighterName}
                         onChange={changeHandler}
@@ -60,7 +61,7 @@ export default function FighterCreate() {
                     <Form.Label>Age:</Form.Label>
                     <Form.Control
                         type='number'
-                        name='age'
+                        name={createFormKeys.age}
                         placeholder='Age'
                         value={formValues.age}
                         onChange={changeHandler}
@@ -70,7 +71,7 @@ export default function FighterCreate() {
                     <Form.Label>Country:</Form.Label>
                     <Form.Control
                         type='text'
-                        name='country'
+                        name={createFormKeys.country}
                         value={formValues.country}
                         onChange={changeHandler}
                         placeholder='Country'
@@ -80,7 +81,7 @@ export default function FighterCreate() {
                     <Form.Label>Fighting Style:</Form.Label>
                     <Form.Control
                         type='text'
-                        name='fightingStyle'
+                        name={createFormKeys.fightingStyle}
                         value={formValues.fightingStyle}
                         onChange={changeHandler}
                         placeholder='Fighting Style'
@@ -90,7 +91,7 @@ export default function FighterCreate() {
                     <Form.Label>Category:</Form.Label>
                     <Form.Control
                         type='text'
-                        name='category'
+                        name={createFormKeys.category}
                         value={formValues.category}
                         onChange={changeHandler}
                         placeholder='Category'
@@ -100,7 +101,7 @@ export default function FighterCreate() {
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
                         type='text'
-                        name='imageUrl'
+                        name={createFormKeys.imageUrl}
                         value={formValues.imageUrl}
                         onChange={changeHandler}
                         placeholder='https://'
@@ -110,7 +111,7 @@ export default function FighterCreate() {
                     <Form.Label>Description:</Form.Label>
                     <Form.Control
                         as='textarea'
-                        name='description'
+                        name={createFormKeys.description}
                         rows={3}
                         value={formValues.description}
                         onChange={changeHandler}
