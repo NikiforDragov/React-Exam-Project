@@ -14,10 +14,14 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Logout from './components/logout/Logout';
 
 function App() {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useState(() => {
+        localStorage.removeItem('accessToken');
+        return {};
+    });
 
     const loginSubmitHandler = async ({ email, password }) => {
         const result = await authService.login(email, password);
@@ -29,12 +33,18 @@ function App() {
         navigate('/');
     };
 
+    const logoutHandler = () => {
+        setAuth({});
+        localStorage.removeItem('accessToken');
+    };
+
     const values = {
         loginSubmitHandler,
+        logoutHandler,
         username: auth.username,
         email: auth.email,
         isAuthenticated: !!auth.accessToken,
-    }
+    };
 
     return (
         <AuthContext.Provider value={values}>
@@ -59,6 +69,10 @@ function App() {
                         <Route
                             path='/users/register'
                             element={<Register />}
+                        ></Route>
+                        <Route
+                            path='/users/logout'
+                            element={<Logout />}
                         ></Route>
                     </Routes>
                 </div>
