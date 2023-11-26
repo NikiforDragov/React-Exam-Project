@@ -14,6 +14,7 @@ import FighterDetails from './components/fighter-details/FighterDetails';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -82,6 +83,7 @@ function App() {
                             element={<Register />}
                         ></Route>
                         <Route path={Path.LOGOUT} element={<Logout />}></Route>
+                        <Route path='*' element={<NotFound />}></Route>
                     </Routes>
                 </div>
                 <Footer />
