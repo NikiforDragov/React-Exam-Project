@@ -3,7 +3,7 @@
 }
 
 #root {
-    background-image: url('src/assets/cover1.jpg');
+    background-image: url('../public/cover1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
