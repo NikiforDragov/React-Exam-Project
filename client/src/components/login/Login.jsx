@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import useForm from '../../hooks/useForm';
+import AuthContext from '../../contexts/authContext';
+
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,37 +10,23 @@ import Container from 'react-bootstrap/Container';
 
 import styles from './Login.module.css';
 
-const formInitialState = {
-    email: '',
-    password: '',
-};
-
 export default function Login() {
-    const [loginValues, setLoginValues] = useState(formInitialState);
-
-    const changeHandler = (e) => {
-        setLoginValues((state) => ({
-            ...state,
-            [e.target.name]: e.target.value,
-        }));
-    };
-
-    const loginSubmitHandler = (e) => {
-        e.preventDefault();
-
-        console.log(loginValues);
-    };
+    const { loginSubmitHandler } = useContext(AuthContext);
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+        email: '',
+        password: '',
+    });
 
     return (
         <Container className={styles.formContainer}>
-            <Form className={styles.form} onSubmit={loginSubmitHandler}>
+            <Form className={styles.form} onSubmit={onSubmit}>
                 <Form.Group className='mb-3' controlId='formEmail'>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
                         type='email'
                         name='email'
-                        value={loginValues.email}
-                        onChange={changeHandler}
+                        value={values.email}
+                        onChange={onChange}
                         placeholder='Enter email'
                     />
                 </Form.Group>
@@ -46,8 +35,8 @@ export default function Login() {
                     <Form.Control
                         type='password'
                         name='password'
-                        value={loginValues.password}
-                        onChange={changeHandler}
+                        value={values.password}
+                        onChange={onChange}
                         placeholder='Password'
                     />
                 </Form.Group>
