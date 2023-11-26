@@ -33,6 +33,16 @@ function App() {
         navigate('/');
     };
 
+    const registerSubmitHandler = async ({ email, password }) => {
+        const result = await authService.register(email, password);
+
+        setAuth(result);
+
+        localStorage.setItem('accessToken', result.accessToken);
+
+        navigate('/');
+    };
+
     const logoutHandler = () => {
         setAuth({});
         localStorage.removeItem('accessToken');
@@ -40,8 +50,8 @@ function App() {
 
     const values = {
         loginSubmitHandler,
+        registerSubmitHandler,
         logoutHandler,
-        username: auth.username,
         email: auth.email,
         isAuthenticated: !!auth.accessToken,
     };
