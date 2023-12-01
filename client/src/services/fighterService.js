@@ -35,3 +35,28 @@ export const create = async ({
 
     return result;
 };
+
+export const edit = async (
+    fighterId,
+    {
+        fighterName,
+        age,
+        country,
+        fightingStyle,
+        category,
+        imageUrl,
+        description,
+    }
+) => {
+    const result = await request.put(`${baseUrl}/${fighterId}`, {
+        fighterName,
+        age,
+        country,
+        fightingStyle,
+        category,
+        imageUrl,
+        description,
+    });
+
+    return result;
+};
