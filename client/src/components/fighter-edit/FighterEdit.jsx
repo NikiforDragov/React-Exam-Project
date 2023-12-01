@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 
 import styles from './FighterEdit.module.css';
 import { fighterFormKeys } from '../../constants/formKeys';
+import * as fighterService from '../../services/fighterService';
+import { useParams } from 'react-router-dom';
 
 const formInitialState = {
     [fighterFormKeys.fighterName]: '',
@@ -17,8 +19,19 @@ const formInitialState = {
     [fighterFormKeys.description]: '',
 };
 
-export default function FighterEdit(props) {
+export default function FighterEdit() {
     const [formValues, setFormValues] = useState(formInitialState);
+
+    const { fighterId } = useParams();
+
+    useEffect(() => {
+        fighterService
+            .getOne(fighterId)
+            .then((fighterData) => {
+                setFormValues(fighterData);
+            })
+            .catch((err) => console.err(err.message));
+    }, [fighterId]);
 
     const changeHandler = (e) => {
         setFormValues((state) => ({
