@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,7 +8,6 @@ import Container from 'react-bootstrap/Container';
 import styles from './FighterEdit.module.css';
 import { fighterFormKeys } from '../../constants/formKeys';
 import * as fighterService from '../../services/fighterService';
-import { useParams } from 'react-router-dom';
 
 const formInitialState = {
     [fighterFormKeys.fighterName]: '',
@@ -20,29 +20,36 @@ const formInitialState = {
 };
 
 export default function FighterEdit() {
-    const [formValues, setFormValues] = useState(formInitialState);
-
+    const [fighterData, setFighterData] = useState(formInitialState);
     const { fighterId } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fighterService
             .getOne(fighterId)
             .then((fighterData) => {
-                setFormValues(fighterData);
+                setFighterData(fighterData);
             })
             .catch((err) => console.err(err.message));
     }, [fighterId]);
 
     const changeHandler = (e) => {
-        setFormValues((state) => ({
+        setFighterData((state) => ({
             ...state,
             [e.target.name]: e.target.value,
         }));
     };
 
-    const editFighterSubmitHandler = (e) => {
+    const editFighterSubmitHandler = async (e) => {
         e.preventDefault();
-        console.log('fighter edited');
+
+        try {
+            await fighterService.edit(fighterId, fighterData);
+            navigate(`/fighters/${fighterId}/details`);
+            console.log('fighter edited');
+        } catch (error) {
+            console.err(err.message);
+        }
     };
 
     return (
@@ -54,7 +61,7 @@ export default function FighterEdit() {
                         type='text'
                         name={fighterFormKeys.fighterName}
                         placeholder='Fighter name'
-                        value={formValues.fighterName}
+                        value={fighterData.fighterName}
                         onChange={changeHandler}
                     />
                 </Form.Group>
@@ -64,7 +71,7 @@ export default function FighterEdit() {
                         type='number'
                         name={fighterFormKeys.age}
                         placeholder='Age'
-                        value={formValues.age}
+                        value={fighterData.age}
                         onChange={changeHandler}
                     />
                 </Form.Group>
@@ -73,7 +80,7 @@ export default function FighterEdit() {
                     <Form.Control
                         type='text'
                         name={fighterFormKeys.country}
-                        value={formValues.country}
+                        value={fighterData.country}
                         onChange={changeHandler}
                         placeholder='Country'
                     />
@@ -83,7 +90,7 @@ export default function FighterEdit() {
                     <Form.Control
                         type='text'
                         name={fighterFormKeys.fightingStyle}
-                        value={formValues.fightingStyle}
+                        value={fighterData.fightingStyle}
                         onChange={changeHandler}
                         placeholder='Fighting Style'
                     />
@@ -93,7 +100,7 @@ export default function FighterEdit() {
                     <Form.Control
                         type='text'
                         name={fighterFormKeys.category}
-                        value={formValues.category}
+                        value={fighterData.category}
                         onChange={changeHandler}
                         placeholder='Category'
                     />
@@ -103,7 +110,7 @@ export default function FighterEdit() {
                     <Form.Control
                         type='text'
                         name={fighterFormKeys.imageUrl}
-                        value={formValues.imageUrl}
+                        value={fighterData.imageUrl}
                         onChange={changeHandler}
                         placeholder='https://'
                     />
@@ -114,7 +121,7 @@ export default function FighterEdit() {
                         as='textarea'
                         name={fighterFormKeys.description}
                         rows={3}
-                        value={formValues.description}
+                        value={fighterData.description}
                         onChange={changeHandler}
                     />
                 </Form.Group>
