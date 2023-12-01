@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as fighterService from '../../services/fighterService';
-import { createFormKeys } from '../../constants/formKeys';
+import { fighterFormKeys } from '../../constants/formKeys';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,13 +11,13 @@ import Container from 'react-bootstrap/Container';
 import styles from './FighterCreate.module.css';
 
 const formInitialState = {
-    [createFormKeys.fighterName]: '',
-    [createFormKeys.age]: '',
-    [createFormKeys.country]: '',
-    [createFormKeys.fightingStyle]: '',
-    [createFormKeys.category]: '',
-    [createFormKeys.imageUrl]: '',
-    [createFormKeys.description]: '',
+    [fighterFormKeys.fighterName]: '',
+    [fighterFormKeys.age]: '',
+    [fighterFormKeys.country]: '',
+    [fighterFormKeys.fightingStyle]: '',
+    [fighterFormKeys.category]: '',
+    [fighterFormKeys.imageUrl]: '',
+    [fighterFormKeys.description]: '',
 };
 
 export default function FighterCreate() {
@@ -51,7 +51,7 @@ export default function FighterCreate() {
                     <Form.Label>Fighter Name:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={createFormKeys.fighterName}
+                        name={fighterFormKeys.fighterName}
                         placeholder='Fighter name'
                         value={formValues.fighterName}
                         onChange={changeHandler}
@@ -61,7 +61,7 @@ export default function FighterCreate() {
                     <Form.Label>Age:</Form.Label>
                     <Form.Control
                         type='number'
-                        name={createFormKeys.age}
+                        name={fighterFormKeys.age}
                         placeholder='Age'
                         value={formValues.age}
                         onChange={changeHandler}
@@ -71,7 +71,7 @@ export default function FighterCreate() {
                     <Form.Label>Country:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={createFormKeys.country}
+                        name={fighterFormKeys.country}
                         value={formValues.country}
                         onChange={changeHandler}
                         placeholder='Country'
@@ -81,7 +81,7 @@ export default function FighterCreate() {
                     <Form.Label>Fighting Style:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={createFormKeys.fightingStyle}
+                        name={fighterFormKeys.fightingStyle}
                         value={formValues.fightingStyle}
                         onChange={changeHandler}
                         placeholder='Fighting Style'
@@ -91,7 +91,7 @@ export default function FighterCreate() {
                     <Form.Label>Category:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={createFormKeys.category}
+                        name={fighterFormKeys.category}
                         value={formValues.category}
                         onChange={changeHandler}
                         placeholder='Category'
@@ -101,7 +101,7 @@ export default function FighterCreate() {
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={createFormKeys.imageUrl}
+                        name={fighterFormKeys.imageUrl}
                         value={formValues.imageUrl}
                         onChange={changeHandler}
                         placeholder='https://'
@@ -111,7 +111,7 @@ export default function FighterCreate() {
                     <Form.Label>Description:</Form.Label>
                     <Form.Control
                         as='textarea'
-                        name={createFormKeys.description}
+                        name={fighterFormKeys.description}
                         rows={3}
                         value={formValues.description}
                         onChange={changeHandler}
