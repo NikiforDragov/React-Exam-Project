@@ -7,7 +7,7 @@ export const registerFormKeys = {
     password: 'password',
     confirmPassword: 'confirmPassword',
 };
-export const createFormKeys = {
+export const fighterFormKeys = {
     fighterName: 'fighterName',
     age: 'age',
     country: 'country',
