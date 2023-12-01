@@ -1,11 +1,37 @@
+import { useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
 import styles from './FighterEdit.module.css';
+import { fighterFormKeys } from '../../constants/formKeys';
+
+const formInitialState = {
+    [fighterFormKeys.fighterName]: '',
+    [fighterFormKeys.age]: '',
+    [fighterFormKeys.country]: '',
+    [fighterFormKeys.fightingStyle]: '',
+    [fighterFormKeys.category]: '',
+    [fighterFormKeys.imageUrl]: '',
+    [fighterFormKeys.description]: '',
+};
 
 export default function FighterEdit(props) {
+    const [formValues, setFormValues] = useState(formInitialState);
+
+    const changeHandler = (e) => {
+        setFormValues((state) => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const editFighterSubmitHandler = (e) => {
+        e.preventDefault();
+        console.log('fighter edited');
+    };
+
     return (
         <Container className={styles.container}>
             <Form onSubmit={editFighterSubmitHandler}>
@@ -13,7 +39,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Fighter Name:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={editFormKeys.fighterName}
+                        name={fighterFormKeys.fighterName}
                         placeholder='Fighter name'
                         value={formValues.fighterName}
                         onChange={changeHandler}
@@ -23,7 +49,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Age:</Form.Label>
                     <Form.Control
                         type='number'
-                        name={editFormKeys.age}
+                        name={fighterFormKeys.age}
                         placeholder='Age'
                         value={formValues.age}
                         onChange={changeHandler}
@@ -33,7 +59,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Country:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={editFormKeys.country}
+                        name={fighterFormKeys.country}
                         value={formValues.country}
                         onChange={changeHandler}
                         placeholder='Country'
@@ -43,7 +69,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Fighting Style:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={editFormKeys.fightingStyle}
+                        name={fighterFormKeys.fightingStyle}
                         value={formValues.fightingStyle}
                         onChange={changeHandler}
                         placeholder='Fighting Style'
@@ -53,7 +79,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Category:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={editFormKeys.category}
+                        name={fighterFormKeys.category}
                         value={formValues.category}
                         onChange={changeHandler}
                         placeholder='Category'
@@ -63,7 +89,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
                         type='text'
-                        name={editFormKeys.imageUrl}
+                        name={fighterFormKeys.imageUrl}
                         value={formValues.imageUrl}
                         onChange={changeHandler}
                         placeholder='https://'
@@ -73,7 +99,7 @@ export default function FighterEdit(props) {
                     <Form.Label>Description:</Form.Label>
                     <Form.Control
                         as='textarea'
-                        name={editFormKeys.description}
+                        name={fighterFormKeys.description}
                         rows={3}
                         value={formValues.description}
                         onChange={changeHandler}
