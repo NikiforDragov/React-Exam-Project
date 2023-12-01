@@ -12,7 +12,6 @@ export default function FighterDetails() {
 
     useEffect(() => {
         fighterService.getOne(fighterId).then((result) => {
-            console.log(result);
             setFighter(result);
         });
     }, [fighterId]);
@@ -34,7 +33,7 @@ export default function FighterDetails() {
                 <Card.Link as={Link} to='/fighters'>
                     Back
                 </Card.Link>
-                <Card.Link as={Link} to='/fighters/edit'>
+                <Card.Link as={Link} to={`/fighters/${fighterId}/edit`}>
                     Edit
                 </Card.Link>
                 <Card.Link as={Link} to='/fighters/delete'>

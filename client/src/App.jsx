@@ -15,6 +15,7 @@ import Logout from './components/logout/Logout';
 import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FighterEdit from './components/fighter-edit/FighterEdit';
 
 function App() {
     return (
@@ -31,6 +32,10 @@ function App() {
                         <Route
                             path={Path.CREATE_FIGHTER}
                             element={<FighterCreate />}
+                        ></Route>
+                        <Route
+                            path={Path.EDIT_FIGHTER}
+                            element={<FighterEdit />}
                         ></Route>
                         <Route
                             path={Path.FIGHTER_DETAILS}
