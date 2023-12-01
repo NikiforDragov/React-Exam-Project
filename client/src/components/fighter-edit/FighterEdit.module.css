@@ -1,0 +1,12 @@
+.container {
+    max-width: 800px;
+    padding: 2em 1em 2em 1em;
+    background-color: #a39393;
+    border: 2px solid black;
+    border-radius: 1.5em;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap
+}
