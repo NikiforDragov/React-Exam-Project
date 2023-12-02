@@ -60,3 +60,6 @@ export const edit = async (
 
     return result;
 };
+
+export const del = async (fighterId) =>
+    await request.del(`${baseUrl}/${fighterId}`);
