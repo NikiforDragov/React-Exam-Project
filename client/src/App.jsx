@@ -16,7 +16,7 @@ import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FighterEdit from './components/fighter-edit/FighterEdit';
-import FighterDelete from './components/fighter-details/fighter-delete/FighterDelete';
+import FighterDelete from './components/fighter-delete/FighterDelete';
 
 function App() {
     return (

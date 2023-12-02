@@ -6,7 +6,7 @@ import * as fighterService from '../../services/fighterService';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import FighterDelete from './fighter-delete/FighterDelete';
+import FighterDelete from '../fighter-delete/FighterDelete';
 
 export default function FighterDetails() {
     const [fighter, setFighter] = useState({});
@@ -55,6 +55,7 @@ export default function FighterDetails() {
                 <FighterDelete
                     toggleDeleteModal={toggleDeleteModal}
                     showDeleteModal={showDeleteModal}
+                    fighterId={fighterId}
                     {...fighter}
                 />
             )}

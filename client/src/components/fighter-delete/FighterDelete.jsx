@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
-import * as fighterService from '../../../services/fighterService';
-import { Path } from '../../../constants/paths';
+import * as fighterService from '../../services/fighterService';
+import { Path } from '../../constants/paths';
 
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 
 export default function FighterDelete({
     toggleDeleteModal,
     showDeleteModal,
     fighterName,
-    fighterId,
+    fighterId
 }) {
     const navigate = useNavigate();
 
