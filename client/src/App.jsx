@@ -16,6 +16,7 @@ import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FighterEdit from './components/fighter-edit/FighterEdit';
+import FighterDelete from './components/fighter-delete/FighterDelete';
 
 function App() {
     return (
@@ -36,6 +37,10 @@ function App() {
                         <Route
                             path={Path.EDIT_FIGHTER}
                             element={<FighterEdit />}
+                        ></Route>
+                        <Route
+                            path={Path.DELETE_FIGHTER}
+                            element={<FighterDelete />}
                         ></Route>
                         <Route
                             path={Path.FIGHTER_DETAILS}
