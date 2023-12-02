@@ -25,7 +25,9 @@ export default function FighterDetails() {
             </Card.Body>
             <ListGroup className='list-group-flush'>
                 <ListGroup.Item>Age: {fighter.age}</ListGroup.Item>
-                <ListGroup.Item>Fighting style: {fighter.fightingStyle}</ListGroup.Item>
+                <ListGroup.Item>
+                    Fighting style: {fighter.fightingStyle}
+                </ListGroup.Item>
                 <ListGroup.Item>Category: {fighter.category}</ListGroup.Item>
                 <ListGroup.Item>Country: {fighter.country}</ListGroup.Item>
             </ListGroup>
@@ -36,11 +38,10 @@ export default function FighterDetails() {
                 <Card.Link as={Link} to={`/fighters/${fighterId}/edit`}>
                     Edit
                 </Card.Link>
-                <Card.Link as={Link} to='/fighters/delete'>
+                <Card.Link as={Link} to={`/fighters/${fighterId}/delete`}>
                     Delete
                 </Card.Link>
             </Card.Body>
         </Card>
     );
 }
-
