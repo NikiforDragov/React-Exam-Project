@@ -14,49 +14,14 @@ export const getOne = async (fighterId) => {
     return result;
 };
 
-export const create = async ({
-    fighterName,
-    age,
-    country,
-    fightingStyle,
-    category,
-    imageUrl,
-    description,
-}) => {
-    const result = await request.post(baseUrl, {
-        fighterName,
-        age,
-        country,
-        fightingStyle,
-        category,
-        imageUrl,
-        description,
-    });
+export const create = async (fighterData) => {
+    const result = await request.post(baseUrl, fighterData);
 
     return result;
 };
 
-export const edit = async (
-    fighterId,
-    {
-        fighterName,
-        age,
-        country,
-        fightingStyle,
-        category,
-        imageUrl,
-        description,
-    }
-) => {
-    const result = await request.put(`${baseUrl}/${fighterId}`, {
-        fighterName,
-        age,
-        country,
-        fightingStyle,
-        category,
-        imageUrl,
-        description,
-    });
+export const edit = async (fighterId, fighterData) => {
+    const result = await request.put(`${baseUrl}/${fighterId}`, fighterData);
 
     return result;
 };
