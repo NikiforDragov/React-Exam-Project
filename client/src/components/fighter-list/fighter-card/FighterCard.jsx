@@ -15,7 +15,7 @@ export default function FighterCard({ _id, imageUrl, fighterName, age }) {
                     <Button
                         as={Link}
                         to={`/fighters/${_id}/details`}
-                        variant='primary'
+                        variant='dark'
                     >
                         Details
                     </Button>
