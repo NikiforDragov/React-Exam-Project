@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Badge from 'react-bootstrap/Badge';
+import Col from 'react-bootstrap/Col';
 
 import styles from './FighterEdit.module.css';
 import { fighterFormKeys } from '../../constants/formKeys';
@@ -53,58 +56,71 @@ export default function FighterEdit() {
     };
 
     return (
-        <Container className={styles.container}>
-            <Form onSubmit={editFighterSubmitHandler}>
-                <Form.Group className='mb-3' controlId='fighterName'>
-                    <Form.Label>Fighter Name:</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name={fighterFormKeys.fighterName}
-                        placeholder='Fighter name'
-                        value={fighterData.fighterName}
-                        onChange={changeHandler}
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='age'>
-                    <Form.Label>Age:</Form.Label>
-                    <Form.Control
-                        type='number'
-                        name={fighterFormKeys.age}
-                        placeholder='Age'
-                        value={fighterData.age}
-                        onChange={changeHandler}
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='country'>
-                    <Form.Label>Country:</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name={fighterFormKeys.country}
-                        value={fighterData.country}
-                        onChange={changeHandler}
-                        placeholder='Country'
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='fightingStyle'>
-                    <Form.Label>Fighting Style:</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name={fighterFormKeys.fightingStyle}
-                        value={fighterData.fightingStyle}
-                        onChange={changeHandler}
-                        placeholder='Fighting Style'
-                    />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='category'>
-                    <Form.Label>Category:</Form.Label>
-                    <Form.Control
-                        type='text'
-                        name={fighterFormKeys.category}
-                        value={fighterData.category}
-                        onChange={changeHandler}
-                        placeholder='Category'
-                    />
-                </Form.Group>
+        <Container className={styles.formContainer}>
+            <Form className={styles.form} onSubmit={editFighterSubmitHandler}>
+                <h1>
+                    Edit <Badge bg='secondary'>Fighter</Badge>
+                </h1>
+                <Row className='mb-3'>
+                    <Form.Group
+                        as={Col}
+                        className='mb-3'
+                        controlId='fighterName'
+                    >
+                        <Form.Label>Fighter Name:</Form.Label>
+                        <Form.Control
+                            type='text'
+                            name={fighterFormKeys.fighterName}
+                            placeholder='Fighter name'
+                            value={fighterData.fighterName}
+                            onChange={changeHandler}
+                        />
+                    </Form.Group>
+                    <Form.Group as={Col} className='mb-3' controlId='age'>
+                        <Form.Label>Age:</Form.Label>
+                        <Form.Control
+                            type='number'
+                            name={fighterFormKeys.age}
+                            placeholder='Age'
+                            value={fighterData.age}
+                            onChange={changeHandler}
+                        />
+                    </Form.Group>
+                    <Form.Group as={Col} className='mb-3' controlId='country'>
+                        <Form.Label>Country:</Form.Label>
+                        <Form.Control
+                            type='text'
+                            name={fighterFormKeys.country}
+                            value={fighterData.country}
+                            onChange={changeHandler}
+                            placeholder='Country'
+                        />
+                    </Form.Group>
+                    <Form.Group
+                        as={Col}
+                        className='mb-3'
+                        controlId='fightingStyle'
+                    >
+                        <Form.Label>Fighting Style:</Form.Label>
+                        <Form.Control
+                            type='text'
+                            name={fighterFormKeys.fightingStyle}
+                            value={fighterData.fightingStyle}
+                            onChange={changeHandler}
+                            placeholder='Fighting Style'
+                        />
+                    </Form.Group>
+                    <Form.Group as={Col} className='mb-3' controlId='category'>
+                        <Form.Label>Category:</Form.Label>
+                        <Form.Control
+                            type='text'
+                            name={fighterFormKeys.category}
+                            value={fighterData.category}
+                            onChange={changeHandler}
+                            placeholder='Category'
+                        />
+                    </Form.Group>
+                </Row>
                 <Form.Group className='mb-3' controlId='imageUrl'>
                     <Form.Label>Image URL:</Form.Label>
                     <Form.Control
@@ -120,13 +136,22 @@ export default function FighterEdit() {
                     <Form.Control
                         as='textarea'
                         name={fighterFormKeys.description}
-                        rows={3}
+                        rows={4}
                         value={fighterData.description}
                         onChange={changeHandler}
                     />
                 </Form.Group>
-                <Button variant='dark' type='submit'>
-                    Submit
+                <Button
+                    as={Link}
+                    to={`/fighters/${fighterId}/details`}
+                    className={styles.button}
+                    variant='dark'
+                    type='submit'
+                >
+                    Back
+                </Button>
+                <Button className={styles.button} variant='warning' type='submit'>
+                    Edit
                 </Button>
             </Form>
         </Container>
