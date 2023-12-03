@@ -1,12 +1,22 @@
-.container {
-    max-width: 800px;
+.formContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.button {    
+    margin-top: 10px;
+}
+
+.form {
+    max-width: 1000px;
     padding: 2em 1em 2em 1em;
     background-color: #a39393;
     border: 2px solid black;
     border-radius: 1.5em;
 }
 
-.form {
-    display: flex;
-    flex-wrap: wrap
+.formControl {
+    width: 30%;
 }
