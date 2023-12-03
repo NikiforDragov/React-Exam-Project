@@ -5,10 +5,6 @@
     align-items: start;
 }
 
-.button {    
-    margin-top: 10px;
-}
-
 .form {
     max-width: 1000px;
     padding: 2em 1em 2em 1em;
@@ -17,6 +13,6 @@
     border-radius: 1.5em;
 }
 
-.formControl {
-    width: 30%;
+.button {    
+    margin-top: 10px;
 }

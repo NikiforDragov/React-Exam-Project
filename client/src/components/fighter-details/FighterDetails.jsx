@@ -8,6 +8,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import FighterDelete from '../fighter-delete/FighterDelete';
 
+import styles from './FighterDetails.module.css';
+
 export default function FighterDetails() {
     const [fighter, setFighter] = useState({});
     const { fighterId } = useParams();
@@ -40,13 +42,27 @@ export default function FighterDetails() {
                     <ListGroup.Item>Country: {fighter.country}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
-                    <Button as={Link} to='/fighters'>
+                    <Button
+                        variant='dark'
+                        className={styles.button}
+                        as={Link}
+                        to='/fighters'
+                    >
                         Back
                     </Button>
-                    <Button as={Link} to={`/fighters/${fighterId}/edit`}>
+                    <Button
+                        variant='warning'
+                        className={styles.button}
+                        as={Link}
+                        to={`/fighters/${fighterId}/edit`}
+                    >
                         Edit
                     </Button>
-                    <Button variant='dark' onClick={toggleDeleteModal}>
+                    <Button
+                        variant='danger'
+                        className={styles.button}
+                        onClick={toggleDeleteModal}
+                    >
                         Delete
                     </Button>
                 </Card.Body>

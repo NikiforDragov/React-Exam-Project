@@ -11,7 +11,7 @@ export default function FighterCard({ _id, imageUrl, fighterName, age }) {
                 <Card.Img variant='top' src={imageUrl} className='card-image' />
                 <Card.Body>
                     <Card.Title>{`${fighterName}`}</Card.Title>
-                    <Card.Text>{age}</Card.Text>
+                    <Card.Text>Age: {age}</Card.Text>
                     <Button
                         as={Link}
                         to={`/fighters/${_id}/details`}

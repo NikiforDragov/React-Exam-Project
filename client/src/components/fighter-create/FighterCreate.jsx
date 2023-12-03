@@ -78,7 +78,6 @@ export default function FighterCreate() {
                             onChange={changeHandler}
                         />
                     </Form.Group>
-
                     <Form.Group as={Col} className='mb-3' controlId='country'>
                         <Form.Label>Country:</Form.Label>
                         <Form.Control
