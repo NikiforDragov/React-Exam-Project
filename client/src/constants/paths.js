@@ -2,6 +2,7 @@ export const Path = {
     HOME: '/',
     LOGIN: '/users/login',
     REGISTER: '/users/register',
+    PROFILE: '/users/profile',
     LOGOUT: '/users/logout',
     ALL_FIGHTERS: '/fighters',
     CREATE_FIGHTER: '/fighters/create',
