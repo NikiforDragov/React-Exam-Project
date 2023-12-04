@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm';
@@ -31,13 +30,15 @@ export default function FighterCreate() {
         try {
             await fighterService.create(fighter);
 
+            reset()
+
             navigate('/fighters');
         } catch (err) {
             console.log(err);
         }
     };
 
-    const { values: fighter, onChange, onSubmit } = useForm(
+    const { values: fighter, onChange, onSubmit, reset } = useForm(
         createFighterSubmitHandler,
         formInitialState
     );

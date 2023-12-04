@@ -19,10 +19,15 @@ export default function useForm(submitHandler, initialValues) {
         submitHandler(values);
     };
 
+    const setChangedInitialValues = (changedFormValues) => {
+        setValues(changedFormValues);
+    };
+
     return {
         values,
         onChange,
         onSubmit,
         reset,
+        setChangedInitialValues,
     };
 }

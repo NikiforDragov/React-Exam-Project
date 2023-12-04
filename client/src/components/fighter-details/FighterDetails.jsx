@@ -52,7 +52,7 @@ export default function FighterDetails() {
                         Back
                     </Button>
                     <Button
-                        variant='warning'
+                        variant='dark'
                         className={styles.button}
                         as={Link}
                         to={`/fighters/${fighterId}/edit`}
