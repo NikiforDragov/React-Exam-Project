@@ -7,16 +7,17 @@ import Home from './components/home/Home';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import FighterList from './components/fighter-list/FighterList';
-import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterDetails from './components/fighter-details/FighterDetails';
+import FighterCreate from './components/fighter-create/FighterCreate';
+import FighterEdit from './components/fighter-edit/FighterEdit';
+import FighterDelete from './components/fighter-delete/FighterDelete';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FighterEdit from './components/fighter-edit/FighterEdit';
-import FighterDelete from './components/fighter-delete/FighterDelete';
+import PrivateAuthGuard from './guards/PrivateAuthGuard';
 
 function App() {
     return (
@@ -31,21 +32,24 @@ function App() {
                             element={<FighterList />}
                         ></Route>
                         <Route
-                            path={Path.CREATE_FIGHTER}
-                            element={<FighterCreate />}
-                        ></Route>
-                        <Route
-                            path={Path.EDIT_FIGHTER}
-                            element={<FighterEdit />}
-                        ></Route>
-                        <Route
-                            path={Path.DELETE_FIGHTER}
-                            element={<FighterDelete />}
-                        ></Route>
-                        <Route
                             path={Path.FIGHTER_DETAILS}
                             element={<FighterDetails />}
                         ></Route>
+                        {/* Private Routes */}
+                        <Route element={<PrivateAuthGuard />}>
+                            <Route
+                                path={Path.CREATE_FIGHTER}
+                                element={<FighterCreate />}
+                            ></Route>
+                            <Route
+                                path={Path.EDIT_FIGHTER}
+                                element={<FighterEdit />}
+                            ></Route>
+                            <Route
+                                path={Path.DELETE_FIGHTER}
+                                element={<FighterDelete />}
+                            ></Route>
+                        </Route>
                         {/* Public Routes */}
                         <Route path={Path.LOGIN} element={<Login />}></Route>
                         <Route
