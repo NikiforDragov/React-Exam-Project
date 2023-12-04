@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import useForm from '../../hooks/useForm';
 import * as fighterService from '../../services/fighterService';
 import { fighterFormKeys } from '../../constants/formKeys';
 
@@ -24,36 +25,26 @@ const formInitialState = {
 };
 
 export default function FighterCreate() {
-    const [fighter, setFighter] = useState(formInitialState);
-
     const navigate = useNavigate();
 
-    const changeHandler = (e) => {
-        setFighter((state) => ({
-            ...state,
-            [e.target.name]: e.target.value,
-        }));
-    };
-
-    const resetForm = () => setFighter(formInitialState);
-
-    const createFighterSubmitHandler = async (e) => {
-        e.preventDefault();
-
+    const createFighterSubmitHandler = async () => {
         try {
             await fighterService.create(fighter);
 
-            resetForm();
-
-            // navigate('/fighters');
+            navigate('/fighters');
         } catch (err) {
             console.log(err);
         }
     };
 
+    const { values: fighter, onChange, onSubmit } = useForm(
+        createFighterSubmitHandler,
+        formInitialState
+    );
+
     return (
         <Container className={styles.formContainer}>
-            <Form className={styles.form} onSubmit={createFighterSubmitHandler}>
+            <Form className={styles.form} onSubmit={onSubmit}>
                 <h1>
                     Create <Badge bg='secondary'>Fighter</Badge>
                 </h1>
@@ -69,7 +60,7 @@ export default function FighterCreate() {
                             name={fighterFormKeys.fighterName}
                             placeholder='Fighter name'
                             value={fighter.fighterName}
-                            onChange={changeHandler}
+                            onChange={onChange}
                         />
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='age'>
@@ -79,7 +70,7 @@ export default function FighterCreate() {
                             name={fighterFormKeys.age}
                             placeholder='Age'
                             value={fighter.age}
-                            onChange={changeHandler}
+                            onChange={onChange}
                         />
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='country'>
@@ -88,7 +79,7 @@ export default function FighterCreate() {
                             type='text'
                             name={fighterFormKeys.country}
                             value={fighter.country}
-                            onChange={changeHandler}
+                            onChange={onChange}
                             placeholder='Country'
                         />
                     </Form.Group>
@@ -102,7 +93,7 @@ export default function FighterCreate() {
                             type='text'
                             name={fighterFormKeys.fightingStyle}
                             value={fighter.fightingStyle}
-                            onChange={changeHandler}
+                            onChange={onChange}
                             placeholder='Fighting Style'
                         />
                     </Form.Group>
@@ -112,7 +103,7 @@ export default function FighterCreate() {
                             type='text'
                             name={fighterFormKeys.category}
                             value={fighter.category}
-                            onChange={changeHandler}
+                            onChange={onChange}
                             placeholder='Category'
                         />
                     </Form.Group>
@@ -123,7 +114,7 @@ export default function FighterCreate() {
                         type='text'
                         name={fighterFormKeys.imageUrl}
                         value={fighter.imageUrl}
-                        onChange={changeHandler}
+                        onChange={onChange}
                         placeholder='https://'
                     />
                 </Form.Group>
@@ -134,7 +125,7 @@ export default function FighterCreate() {
                         name={fighterFormKeys.description}
                         rows={4}
                         value={fighter.description}
-                        onChange={changeHandler}
+                        onChange={onChange}
                     />
                 </Form.Group>
                 <Button className={styles.button} variant='dark' type='submit'>
