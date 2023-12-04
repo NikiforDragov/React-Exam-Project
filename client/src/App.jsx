@@ -17,7 +17,8 @@ import Logout from './components/logout/Logout';
 import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PrivateAuthGuard from './guards/PrivateAuthGuard';
+import PrivateRouteGuard from './guards/PrivateRouteGuard';
+import PublicRouteGuard from './guards/PublicRouteGuard';
 
 function App() {
     return (
@@ -36,7 +37,7 @@ function App() {
                             element={<FighterDetails />}
                         ></Route>
                         {/* Private Routes */}
-                        <Route element={<PrivateAuthGuard />}>
+                        <Route element={<PrivateRouteGuard />}>
                             <Route
                                 path={Path.CREATE_FIGHTER}
                                 element={<FighterCreate />}
@@ -49,14 +50,22 @@ function App() {
                                 path={Path.DELETE_FIGHTER}
                                 element={<FighterDelete />}
                             ></Route>
+                            <Route
+                                path={Path.LOGOUT}
+                                element={<Logout />}
+                            ></Route>
                         </Route>
                         {/* Public Routes */}
-                        <Route path={Path.LOGIN} element={<Login />}></Route>
-                        <Route
-                            path={Path.REGISTER}
-                            element={<Register />}
-                        ></Route>
-                        <Route path={Path.LOGOUT} element={<Logout />}></Route>
+                        <Route element={<PublicRouteGuard />}>
+                            <Route
+                                path={Path.LOGIN}
+                                element={<Login />}
+                            ></Route>
+                            <Route
+                                path={Path.REGISTER}
+                                element={<Register />}
+                            ></Route>
+                        </Route>
                         <Route path='*' element={<NotFound />}></Route>
                     </Routes>
                 </div>
