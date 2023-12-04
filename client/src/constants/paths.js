@@ -5,6 +5,7 @@ export const Path = {
     PROFILE: '/users/profile',
     LOGOUT: '/users/logout',
     ALL_FIGHTERS: '/fighters',
+    SEARCH: '/fighters/search',
     CREATE_FIGHTER: '/fighters/create',
     EDIT_FIGHTER: '/fighters/:fighterId/edit',
     DELETE_FIGHTER: '/fighters/:fighterId/delete',

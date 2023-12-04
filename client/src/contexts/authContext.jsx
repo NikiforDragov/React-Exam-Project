@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
         try {
             const result = await authService.login(email, password);
             setAuth(result);
-            console.log(result);
             localStorage.setItem('accessToken', result.accessToken);
             navigate('/');
         } catch (error) {

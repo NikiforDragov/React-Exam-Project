@@ -49,7 +49,7 @@ export default function FighterDetails() {
                         variant='dark'
                         className={styles.button}
                         as={Link}
-                        to='/fighters'
+                        to={-1}
                     >
                         Back
                     </Button>

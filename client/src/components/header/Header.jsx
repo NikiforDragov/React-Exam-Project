@@ -33,9 +33,14 @@ export default function Header() {
                             All fighters
                         </Nav.Link>
                         {isAuthenticated && (
+                            <>
                             <Nav.Link as={Link} to={Path.CREATE_FIGHTER}>
                                 Create fighter
                             </Nav.Link>
+                            <Nav.Link as={Link} to={Path.SEARCH}>
+                                Search
+                            </Nav.Link>
+                            </>
                         )}
                     </Nav>
                     <Nav>

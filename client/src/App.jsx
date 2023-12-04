@@ -15,11 +15,13 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import Profile from './components/profile/Profile';
+import Search from './components/search/search';
 import NotFound from './components/not-found/NotFound';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRouteGuard from './guards/PrivateRouteGuard';
 import PublicRouteGuard from './guards/PublicRouteGuard';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
@@ -42,6 +44,10 @@ function App() {
                             <Route
                                 path={Path.CREATE_FIGHTER}
                                 element={<FighterCreate />}
+                            ></Route>
+                            <Route
+                                path={Path.SEARCH}
+                                element={<Search />}
                             ></Route>
                             <Route
                                 path={Path.PROFILE}

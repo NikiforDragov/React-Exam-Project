@@ -141,7 +141,7 @@ export default function FighterEdit() {
                 </Form.Group>
                 <Button
                     as={Link}
-                    to={`/fighters/${fighterId}/details`}
+                    to={-1}
                     className={styles.button}
                     variant='dark'
                     type='submit'
