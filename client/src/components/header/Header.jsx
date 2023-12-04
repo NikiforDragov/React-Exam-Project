@@ -42,7 +42,7 @@ export default function Header() {
                         {isAuthenticated && (
                             <>
                                 <Nav.Link as={Link} to='/users/profile'>
-                                    {`${email}'s Profile`}
+                                    {'My Fighters'}
                                 </Nav.Link>
                                 <Nav.Link as={Link} to={Path.LOGOUT}>
                                     Logout
