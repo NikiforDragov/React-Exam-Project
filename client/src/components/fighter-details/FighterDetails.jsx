@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import FighterDelete from '../fighter-delete/FighterDelete';
 
 import styles from './FighterDetails.module.css';
+import Container from 'react-bootstrap/esm/Container';
 
 export default function FighterDetails() {
     const [fighter, setFighter] = useState({});
@@ -24,8 +25,8 @@ export default function FighterDetails() {
     const toggleDeleteModal = () => setShowDeleteModal(!showDeleteModal);
 
     return (
-        <>
-            <Card>
+        <Container className={styles.cardContainer}>
+            <Card className={styles.card}>
                 <Card.Img variant='top' src={fighter.imageUrl} />
                 <Card.Body>
                     <Card.Title>{fighter.fighterName}</Card.Title>
@@ -75,6 +76,6 @@ export default function FighterDetails() {
                     {...fighter}
                 />
             )}
-        </>
+        </Container>
     );
 }

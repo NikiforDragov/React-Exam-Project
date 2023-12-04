@@ -1,3 +1,14 @@
+.cardContainer {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.card {
+    max-width: 700px;
+}
+
 .button {
     margin-right: 10px;
 }

@@ -16,7 +16,7 @@ export default function NotFound() {
             >
                 <Col xs={12} md={6} className='text-center'>
                     <Image
-                        src='/public/404.png'
+                        src='/404.png'
                         alt='404 Not Found'
                         fluid
                     />
