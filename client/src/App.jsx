@@ -6,7 +6,6 @@ import { Path } from './constants/paths';
 import Home from './components/home/Home';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-import FighterList from './components/fighter-list/FighterList';
 import FighterDetails from './components/fighter-details/FighterDetails';
 import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterEdit from './components/fighter-edit/FighterEdit';
@@ -19,6 +18,7 @@ import NotFound from './components/not-found/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRouteGuard from './guards/PrivateRouteGuard';
 import PublicRouteGuard from './guards/PublicRouteGuard';
+import Fighters from './components/fighters/Fighters';
 
 function App() {
     return (
@@ -30,7 +30,7 @@ function App() {
                         <Route path={Path.HOME} element={<Home />}></Route>
                         <Route
                             path={Path.ALL_FIGHTERS}
-                            element={<FighterList />}
+                            element={<Fighters />}
                         ></Route>
                         <Route
                             path={Path.FIGHTER_DETAILS}
