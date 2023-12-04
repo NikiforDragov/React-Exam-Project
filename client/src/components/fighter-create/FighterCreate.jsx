@@ -35,13 +35,17 @@ export default function FighterCreate() {
         }));
     };
 
+    const resetForm = () => setFighter(formInitialState);
+
     const createFighterSubmitHandler = async (e) => {
         e.preventDefault();
 
         try {
             await fighterService.create(fighter);
 
-            navigate('/fighters');
+            resetForm();
+
+            // navigate('/fighters');
         } catch (err) {
             console.log(err);
         }
