@@ -8,6 +8,14 @@ export const getAll = async () => {
     return result;
 };
 
+export const getAllByOwner = async (ownerId) => {
+    const query = `?where=_ownerId%3D%22${ownerId}%22&sortBy=_createdOn%20desc`;
+
+    const result = await request.get(`${baseUrl}${query}`);
+
+    return result;
+};
+
 export const getOne = async (fighterId) => {
     const result = await request.get(`${baseUrl}/${fighterId}`);
 
