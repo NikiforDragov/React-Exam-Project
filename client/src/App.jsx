@@ -10,15 +10,16 @@ import FighterDetails from './components/fighter-details/FighterDetails';
 import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterEdit from './components/fighter-edit/FighterEdit';
 import FighterDelete from './components/fighter-delete/FighterDelete';
+import Fighters from './components/fighters/Fighters';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import Profile from './components/profile/Profile';
 import NotFound from './components/not-found/NotFound';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivateRouteGuard from './guards/PrivateRouteGuard';
 import PublicRouteGuard from './guards/PublicRouteGuard';
-import Fighters from './components/fighters/Fighters';
 
 function App() {
     return (
@@ -41,6 +42,10 @@ function App() {
                             <Route
                                 path={Path.CREATE_FIGHTER}
                                 element={<FighterCreate />}
+                            ></Route>
+                            <Route
+                                path={Path.PROFILE}
+                                element={<Profile />}
                             ></Route>
                             <Route
                                 path={Path.EDIT_FIGHTER}
