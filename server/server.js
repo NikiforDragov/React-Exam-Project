@@ -1343,6 +1343,7 @@
         fighters: {
             "mockFighter1": {
                 "_id": "mockFighter1",
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "fighterName": "Conor Mcgregor",
                 "age": "30",
                 "country": "Ireland",
@@ -1355,6 +1356,7 @@
             },
             "f8be19bf-5ae7-4db9-8354-e420fb2c830c": {
                 "_id": "f8be19bf-5ae7-4db9-8354-e420fb2c830c",
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
                 "fighterName": "Niki Dragov",
                 "age": "24",
                 "country": "Bulgaria",
