@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/authContext';
 import { Path } from './constants/paths';
@@ -46,6 +46,7 @@ function App() {
                             path={Path.FIGHTER_DETAILS}
                             element={<FighterDetails />}
                         ></Route>
+                        {/* Public Routes */}
                         <Route path={Path.LOGIN} element={<Login />}></Route>
                         <Route
                             path={Path.REGISTER}
