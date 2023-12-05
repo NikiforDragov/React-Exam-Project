@@ -10,12 +10,12 @@ import FighterDetails from './components/fighter-details/FighterDetails';
 import FighterCreate from './components/fighter-create/FighterCreate';
 import FighterEdit from './components/fighter-edit/FighterEdit';
 import FighterDelete from './components/fighter-delete/FighterDelete';
+import FighterSearch from './components/fighter-search/FighterSearch';
 import Fighters from './components/fighters/Fighters';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import Profile from './components/profile/Profile';
-import Search from './components/search/search';
 import NotFound from './components/not-found/NotFound';
 
 import PrivateRouteGuard from './guards/PrivateRouteGuard';
@@ -47,7 +47,7 @@ function App() {
                             ></Route>
                             <Route
                                 path={Path.SEARCH}
-                                element={<Search />}
+                                element={<FighterSearch />}
                             ></Route>
                             <Route
                                 path={Path.PROFILE}
