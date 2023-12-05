@@ -24,6 +24,7 @@ export default function FighterDetails() {
         fighterService.getOne(fighterId).then((result) => {
             setFighter(result);
             setIsOwner(userId === result._ownerId);
+            console.log(result)
         });
     }, [fighterId]);
 
@@ -32,7 +33,7 @@ export default function FighterDetails() {
     return (
         <Container className={styles.cardContainer}>
             <Card className={styles.card}>
-                <Card.Img variant='top' src={fighter.imageUrl} />
+                <Card.Img className={styles.cardImage} variant='top' src={fighter.imageUrl} />
                 <Card.Body>
                     <Card.Title>{fighter.fighterName}</Card.Title>
                     <Card.Text>{fighter.description}</Card.Text>
