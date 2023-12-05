@@ -30,13 +30,21 @@ const request = async (method, url, data) => {
         return {};
     }
 
-    const result = await response.json();
+    try {
+        const result = await response.json();
 
-    if (!response.ok) {
-        throw result;
+        if (!response.ok) {
+            throw new Error(result.message || 'Unknown error occurred');
+        }
+
+        return result;
+    } catch (error) {
+        if (!response.ok) {
+            throw new Error(response.statusText || 'Unknown error occurred');
+        }
+
+        throw new Error('Failed to parse server response');
     }
-
-    return result;
 };
 
 export const get = request.bind(null, 'GET');

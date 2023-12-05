@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm';
@@ -25,31 +25,42 @@ const formInitialState = {
 };
 
 export default function FighterCreate() {
+    const [error, setError] = useState(null);
+
     useEffect(() => {
-		document.title = 'Create';
-	}, []);
+        document.title = 'Create';
+    }, []);
 
     const navigate = useNavigate();
 
     const createFighterSubmitHandler = async () => {
         try {
+            if(fighter.fighterName === '') {
+                throw new Error('FighterName is required!');
+            }
             await fighterService.create(fighter);
 
-            reset()
+            reset();
 
             navigate('/fighters');
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.error(error.message);
+            setError(error.message);
         }
     };
 
-    const { values: fighter, onChange, onSubmit, reset } = useForm(
-        createFighterSubmitHandler,
-        formInitialState
-    );
+    const {
+        values: fighter,
+        onChange,
+        onSubmit,
+        reset,
+    } = useForm(createFighterSubmitHandler, formInitialState);
 
     return (
         <Container className={styles.formContainer}>
+
+            {error && <div className="error-message">{error}</div>}
+
             <Form className={styles.form} onSubmit={onSubmit}>
                 <h1>
                     Create <Badge bg='secondary'>Fighter</Badge>
