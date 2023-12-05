@@ -34,5 +34,13 @@ export const edit = async (fighterId, fighterData) => {
     return result;
 };
 
+export const searchByName = async (fighterName) => {
+    const query = `?where=fighterName%20LIKE%20%22${fighterName}%22&sortBy=_createdOn%20desc`;
+
+    const result = await request.get(`${baseUrl}${query}`);
+
+    return result;
+};
+
 export const del = async (fighterId) =>
     await request.del(`${baseUrl}/${fighterId}`);
