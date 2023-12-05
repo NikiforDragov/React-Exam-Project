@@ -9,7 +9,7 @@ export const getAll = async () => {
 };
 
 export const getAllByOwner = async (ownerId) => {
-    const query = `?where=_ownerId%3D%22${ownerId}%22&sortBy=_createdOn%20desc`;
+    const query = `?where=_ownerId%3D%22${ownerId}%22`;
 
     const result = await request.get(`${baseUrl}${query}`);
 
