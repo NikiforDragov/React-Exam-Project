@@ -1342,8 +1342,8 @@
     var seedData = {
         fighters: {
             "mockFighter1": {
-                "_id": "mockFighter1",
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "_id": "mockFighter1",
                 "fighterName": "Conor Mcgregor",
                 "age": "30",
                 "country": "Ireland",
@@ -1355,15 +1355,39 @@
                 "fightingStyle": "MMA"
             },
             "f8be19bf-5ae7-4db9-8354-e420fb2c830c": {
-                "_id": "f8be19bf-5ae7-4db9-8354-e420fb2c830c",
                 "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
-                "fighterName": "Niki Dragov",
-                "age": "24",
+                "_id": "f8be19bf-5ae7-4db9-8354-e420fb2c830c",
+                "fighterName": "Stipe Miocic",
+                "age": "41",
                 "country": "Bulgaria",
-                "imageUrl": "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_.jpg",
-                "category": "MiddleWeight",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyl6uei9RsIps_DFDareUL5H0ksoEDJxWuwEkNdQM6qg&s",
+                "category": "Heavyweight",
                 "description": "Stipe Miocic (born August 19, 1982) is an American professional mixed martial artist. He currently competes in the Heavyweight division in the Ultimate Fighting Championship (UFC), where he is a former two time UFC Heavyweight Champion. As of November 14, 2023, he is #4 in the UFC heavyweight rankings.",
                 "fightingStyle": "Kickboxing"
+            },
+            "5ebcdf6a-3145-4060-b7b6-b31315617919": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "fighterName": "Stipe Miocic",
+                "age": "41",
+                "country": "USA",
+                "fightingStyle": "MMA",
+                "category": "Heavyweight",
+                "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyl6uei9RsIps_DFDareUL5H0ksoEDJxWuwEkNdQM6qg&s",
+                "description": "Stipe Miocic (born August 19, 1982) is an American professional mixed martial artist. He currently competes in the Heavyweight division in the Ultimate Fighting Championship (UFC), where he is a former two time UFC Heavyweight Champion.",
+                "_createdOn": 1701799232934,
+                "_id": "5ebcdf6a-3145-4060-b7b6-b31315617919"
+            },
+            "cab59d75-37ca-42e6-8d5b-91ce2866222a":{
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "fighterName": "Badr Hari",
+                "age": "39",
+                "country": "Morocco",
+                "fightingStyle": "Kickboxing",
+                "category": "Heavyweight",
+                "imageUrl": "https://yt3.googleusercontent.com/7uCHfwqI0oYpTox6FtzMrF3S_nPjVHxyQ71031lySjyoZgPXq4jjPHgxQEwZ8lTMU0Vlxe52dQ=s900-c-k-c0x00ffffff-no-rj",
+                "description": "Badr Hari (born 8 December 1984) is a Moroccan-Dutch kickboxer. He is a former K-1 Heavyweight World Champion (2007–2008), It's Showtime Heavyweight World Champion (2009–2010) and K-1 World Grand Prix 2008 and 2009 finalist. He is widely considered one of the greatest kickboxers of all time.",
+                "_createdOn": 1701803415081,
+                "_id": "cab59d75-37ca-42e6-8d5b-91ce2866222a"
             }
         }
     };
