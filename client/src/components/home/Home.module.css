@@ -1,0 +1,24 @@
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+}
+
+.card {
+    text-align: center;
+    width: 1000px;
+}
+
+.cardBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardHeader h1 {
+    margin: 20px 0 20px 0;
+}
+
+.cardButton {
+    margin: 20px 0 20px 0;
+}

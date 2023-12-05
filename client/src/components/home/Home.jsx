@@ -1,22 +1,44 @@
 import { Link } from 'react-router-dom';
 import { Path } from '../../constants/paths';
 
+import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
+
+import styles from './Home.module.css';
 
 export default function Home() {
     return (
-        <Card className='text-center'>
-            <Card.Header>Featured</Card.Header>
-            <Card.Body>
-                <Card.Title>Special title treatment</Card.Title>
-                <Card.Text>
-                    With supporting text below as a natural lead-in to
-                    additional content.
-                </Card.Text>
-                <Button as={Link} to={Path.ALL_FIGHTERS} variant='dark'>See All Fighters</Button>
-            </Card.Body>
-            <Card.Footer className='text-muted'>2 days ago</Card.Footer>
-        </Card>
+        <Container className={styles.cardContainer}>
+            <Card className={styles.card}>
+                <Card.Header className={styles.cardHeader}>
+                    <h1>Welcome to my project website!</h1>
+                </Card.Header>
+                <Card.Body className={styles.cardBody}>
+                    <Card.Text>
+                        <h4>
+                            Here people can share, find and like their favorite
+                            fighters.
+                        </h4>
+                    </Card.Text>
+                    {/* <Image
+                        src='/404.png'
+                        alt='home'
+                        fluid
+                    /> */}
+                </Card.Body>
+                <Card.Footer>
+                    <Button
+                        className={styles.cardButton}
+                        as={Link}
+                        to={Path.ALL_FIGHTERS}
+                        variant='dark'
+                    >
+                        See All Fighters
+                    </Button>
+                </Card.Footer>
+            </Card>
+        </Container>
     );
 }
