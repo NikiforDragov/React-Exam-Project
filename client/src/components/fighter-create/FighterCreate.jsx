@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm';
@@ -24,6 +25,10 @@ const formInitialState = {
 };
 
 export default function FighterCreate() {
+    useEffect(() => {
+		document.title = 'Create';
+	}, []);
+
     const navigate = useNavigate();
 
     const createFighterSubmitHandler = async () => {

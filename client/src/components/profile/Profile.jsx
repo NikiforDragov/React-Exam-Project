@@ -8,6 +8,10 @@ export default function Profile() {
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {
+		document.title = 'My Fighters';
+	}, []);
+
+    useEffect(() => {
         fighterService
             .getAllByOwner(userId)
             .then((result) => setMyFighters(result));

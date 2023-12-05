@@ -1,14 +1,17 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Path } from '../../constants/paths';
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/Image';
 
 import styles from './Home.module.css';
 
 export default function Home() {
+    useEffect(() => {
+		document.title = 'Home';
+	}, []);
     return (
         <Container className={styles.cardContainer}>
             <Card className={styles.card}>
@@ -16,17 +19,10 @@ export default function Home() {
                     <h1>Welcome to my project website!</h1>
                 </Card.Header>
                 <Card.Body className={styles.cardBody}>
-                    <Card.Text>
                         <h4>
                             Here people can share, find and like their favorite
                             fighters.
                         </h4>
-                    </Card.Text>
-                    {/* <Image
-                        src='/404.png'
-                        alt='home'
-                        fluid
-                    /> */}
                 </Card.Body>
                 <Card.Footer>
                     <Button

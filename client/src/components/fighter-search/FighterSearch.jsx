@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useForm from '../../hooks/useForm';
 import * as fighterService from '../../services/fighterService';
@@ -11,6 +11,10 @@ import styles from './FighterSearch.module.css';
 import FighterList from '../fighter-list/FighterList';
 
 export default function Search() {
+    useEffect(() => {
+		document.title = 'Search';
+	}, []);
+
     const [searchedFighter, setSearchedFighter] = useState([]);
 
     const searchHandler = async () => {

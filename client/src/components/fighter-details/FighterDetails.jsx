@@ -21,10 +21,14 @@ export default function FighterDetails() {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     useEffect(() => {
+		document.title = 'Details';
+	}, []);
+    
+    useEffect(() => {
         fighterService.getOne(fighterId).then((result) => {
             setFighter(result);
             setIsOwner(userId === result._ownerId);
-            console.log(result)
+            // console.log(result)
         });
     }, [fighterId]);
 

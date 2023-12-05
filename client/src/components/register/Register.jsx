@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm';
@@ -12,6 +12,10 @@ import Container from 'react-bootstrap/Container';
 import styles from './Register.module.css';
 
 export default function Register() {
+    useEffect(() => {
+		document.title = 'Register';
+	}, []);
+
     const { registerSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         [registerFormKeys.email]: '',

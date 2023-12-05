@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm';
@@ -13,6 +13,10 @@ import Container from 'react-bootstrap/Container';
 import styles from './Login.module.css';
 
 export default function Login() {
+    useEffect(() => {
+		document.title = 'Login';
+	}, []);
+
     const { loginSubmitHandler } = useContext(AuthContext);
     const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         [loginFormKeys.email]: '',

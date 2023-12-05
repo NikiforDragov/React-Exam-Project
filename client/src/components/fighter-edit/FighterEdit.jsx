@@ -29,6 +29,10 @@ export default function FighterEdit() {
     const navigate = useNavigate();
 
     useEffect(() => {
+		document.title = 'Edit';
+	}, []);
+
+    useEffect(() => {
         fighterService
             .getOne(fighterId)
             .then((fighterData) => {
