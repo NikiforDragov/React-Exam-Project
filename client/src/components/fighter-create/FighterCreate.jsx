@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import * as fighterService from '../../services/fighterService';
 import { fighterFormKeys } from '../../constants/formKeys';
 
+import ErrorAlert from '../error-alert/ErrorAlert';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -35,9 +36,6 @@ export default function FighterCreate() {
 
     const createFighterSubmitHandler = async () => {
         try {
-            if(fighter.fighterName === '') {
-                throw new Error('FighterName is required!');
-            }
             await fighterService.create(fighter);
 
             reset();
@@ -58,13 +56,16 @@ export default function FighterCreate() {
 
     return (
         <Container className={styles.formContainer}>
-
-            {error && <div className="error-message">{error}</div>}
-
             <Form className={styles.form} onSubmit={onSubmit}>
                 <h1>
                     Create <Badge bg='secondary'>Fighter</Badge>
                 </h1>
+                {error && (
+                    <ErrorAlert
+                        ErrorMessage={error}
+                        onClose={() => setError(null)}
+                    />
+                )}
                 <Row className='mb-3'>
                     <Form.Group
                         as={Col}
