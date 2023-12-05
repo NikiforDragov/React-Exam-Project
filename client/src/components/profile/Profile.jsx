@@ -11,7 +11,7 @@ export default function Profile() {
         fighterService
             .getAllByOwner(userId)
             .then((result) => setMyFighters(result));
-    });
+    }, [userId]);
 
     return <FighterList fighters={myFighters} />;
 }
