@@ -2,18 +2,20 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import * as fighterService from '../../services/fighterService';
+import AuthContext from '../../contexts/authContext';
 
+import Container from 'react-bootstrap/esm/Container';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import FighterDelete from '../fighter-delete/FighterDelete';
 
 import styles from './FighterDetails.module.css';
-import Container from 'react-bootstrap/esm/Container';
-import AuthContext from '../../contexts/authContext';
 
 export default function FighterDetails() {
     const [fighter, setFighter] = useState({});
+    const [isOwner, setIsOwner] = useState(false);
+    const { isAuthenticated } = useContext(AuthContext);
     const { userId } = useContext(AuthContext);
     const { fighterId } = useParams();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -21,6 +23,7 @@ export default function FighterDetails() {
     useEffect(() => {
         fighterService.getOne(fighterId).then((result) => {
             setFighter(result);
+            setIsOwner(userId === result._ownerId);
         });
     }, [fighterId]);
 
@@ -53,25 +56,35 @@ export default function FighterDetails() {
                     >
                         Back
                     </Button>
-                    {userId === fighter._ownerId && (
-                        <>
+                    {isAuthenticated &&
+                        (isOwner ? (
+                            <>
+                                <Button
+                                    variant='dark'
+                                    className={styles.button}
+                                    as={Link}
+                                    to={`/fighters/${fighterId}/edit`}
+                                >
+                                    Edit
+                                </Button>
+                                <Button
+                                    variant='danger'
+                                    className={styles.button}
+                                    onClick={toggleDeleteModal}
+                                >
+                                    Delete
+                                </Button>
+                            </>
+                        ) : (
                             <Button
                                 variant='dark'
                                 className={styles.button}
                                 as={Link}
-                                to={`/fighters/${fighterId}/edit`}
+                                to={`/`}
                             >
-                                Edit
+                                Like
                             </Button>
-                            <Button
-                                variant='danger'
-                                className={styles.button}
-                                onClick={toggleDeleteModal}
-                            >
-                                Delete
-                            </Button>
-                        </>
-                    )}
+                        ))}
                 </Card.Body>
             </Card>
             {showDeleteModal && (
