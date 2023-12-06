@@ -139,7 +139,10 @@ export default function FighterCreate() {
                             onChange={onChange}
                             placeholder='Fighting Style'
                             onBlur={onBlur}
-                            isInvalid={touched.fightingStyle && !!formErrors.fightingStyle}
+                            isInvalid={
+                                touched.fightingStyle &&
+                                !!formErrors.fightingStyle
+                            }
                         />
                         <Form.Control.Feedback type='invalid'>
                             {formErrors.fightingStyle}
@@ -154,7 +157,9 @@ export default function FighterCreate() {
                             onChange={onChange}
                             placeholder='Category'
                             onBlur={onBlur}
-                            isInvalid={touched.category && !!formErrors.category}
+                            isInvalid={
+                                touched.category && !!formErrors.category
+                            }
                         />
                         <Form.Control.Feedback type='invalid'>
                             {formErrors.category}
@@ -173,8 +178,8 @@ export default function FighterCreate() {
                         isInvalid={touched.imageUrl && !!formErrors.imageUrl}
                     />
                     <Form.Control.Feedback type='invalid'>
-                            {formErrors.imageUrl}
-                        </Form.Control.Feedback>
+                        {formErrors.imageUrl}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId='description'>
                     <Form.Label>Description:</Form.Label>
@@ -184,7 +189,14 @@ export default function FighterCreate() {
                         rows={4}
                         value={fighter.description}
                         onChange={onChange}
+                        onBlur={onBlur}
+                        isInvalid={
+                            touched.description && !!formErrors.description
+                        }
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.description}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Button className={styles.button} variant='dark' type='submit'>
                     Create

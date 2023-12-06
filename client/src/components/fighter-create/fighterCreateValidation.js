@@ -41,5 +41,13 @@ export default function fighterCreateValidation(values) {
         errors.imageUrl = 'Image Url must start with https://';
     }
 
+    if (!values.description) {
+        errors.description = 'Description is required';
+    } else if (values.description.length < 10) {
+        errors.description = 'Min 10 characters!';
+    } else if (values.description.length > 300) {
+        errors.description = 'Max 300 characters!';
+    }
+
     return errors
 }
