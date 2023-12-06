@@ -138,7 +138,12 @@ export default function FighterCreate() {
                             value={fighter.fightingStyle}
                             onChange={onChange}
                             placeholder='Fighting Style'
+                            onBlur={onBlur}
+                            isInvalid={touched.fightingStyle && !!formErrors.fightingStyle}
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.fightingStyle}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='category'>
                         <Form.Label>Category:</Form.Label>

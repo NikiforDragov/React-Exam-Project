@@ -21,5 +21,11 @@ export default function fighterCreateValidation(values) {
         errors.country = 'Min 3 characters!';
     }
 
+    if (!values.fightingStyle) {
+        errors.fightingStyle = 'Fighting Style is required';
+    } else if (values.fightingStyle.length < 3) {
+        errors.fightingStyle = 'Min 3 characters!';
+    }
+
     return errors
 }
