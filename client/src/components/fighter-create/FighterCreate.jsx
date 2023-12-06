@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import * as fighterService from '../../services/fighterService';
 import { fighterFormKeys } from '../../constants/formKeys';
+import fighterCreateValidation from './FighterCreateValidation';
 
 import ErrorAlert from '../error-alert/ErrorAlert';
 import Button from 'react-bootstrap/Button';
@@ -26,7 +27,7 @@ const formInitialState = {
 };
 
 export default function FighterCreate() {
-    const [error, setError] = useState(null);
+    const [serverError, setServerError] = useState(null);
 
     useEffect(() => {
         document.title = 'Create';
@@ -43,16 +44,23 @@ export default function FighterCreate() {
             navigate('/fighters');
         } catch (error) {
             console.error(error.message);
-            setError(error.message);
+            setServerError(error.message);
         }
     };
 
     const {
         values: fighter,
+        formErrors,
+        touched,
         onChange,
+        onBlur,
         onSubmit,
         reset,
-    } = useForm(createFighterSubmitHandler, formInitialState);
+    } = useForm(
+        createFighterSubmitHandler,
+        formInitialState,
+        fighterCreateValidation
+    );
 
     return (
         <Container className={styles.formContainer}>
@@ -60,10 +68,10 @@ export default function FighterCreate() {
                 <h1>
                     Create <Badge bg='secondary'>Fighter</Badge>
                 </h1>
-                {error && (
+                {serverError && (
                     <ErrorAlert
-                        ErrorMessage={error}
-                        onClose={() => setError(null)}
+                        ErrorMessage={serverError}
+                        onClose={() => setServerError(null)}
                     />
                 )}
                 <Row className='mb-3'>
@@ -79,7 +87,14 @@ export default function FighterCreate() {
                             placeholder='Fighter name'
                             value={fighter.fighterName}
                             onChange={onChange}
+                            onBlur={onBlur}
+                            isInvalid={
+                                touched.fighterName && !!formErrors.fighterName
+                            }
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.fighterName}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='age'>
                         <Form.Label>Age:</Form.Label>
@@ -89,7 +104,12 @@ export default function FighterCreate() {
                             placeholder='Age'
                             value={fighter.age}
                             onChange={onChange}
+                            onBlur={onBlur}
+                            isInvalid={touched.age && !!formErrors.age}
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.age}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='country'>
                         <Form.Label>Country:</Form.Label>
