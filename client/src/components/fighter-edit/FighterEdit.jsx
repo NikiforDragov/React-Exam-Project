@@ -117,7 +117,12 @@ export default function FighterEdit() {
                             value={fighterData.country}
                             onChange={onChange}
                             placeholder='Country'
+                            onBlur={onBlur}
+                            isInvalid={touched.country && !!formErrors.country}
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.country}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group
                         as={Col}
@@ -129,9 +134,17 @@ export default function FighterEdit() {
                             type='text'
                             name={fighterFormKeys.fightingStyle}
                             value={fighterData.fightingStyle}
-                            onChange={onChange}
                             placeholder='Fighting Style'
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            isInvalid={
+                                touched.fightingStyle &&
+                                !!formErrors.fightingStyle
+                            }
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.fightingStyle}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='category'>
                         <Form.Label>Category:</Form.Label>
@@ -141,7 +154,14 @@ export default function FighterEdit() {
                             value={fighterData.category}
                             onChange={onChange}
                             placeholder='Category'
+                            onBlur={onBlur}
+                            isInvalid={
+                                touched.category && !!formErrors.category
+                            }
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.category}
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
                 <Form.Group className='mb-3' controlId='imageUrl'>
@@ -152,7 +172,12 @@ export default function FighterEdit() {
                         value={fighterData.imageUrl}
                         onChange={onChange}
                         placeholder='https://'
+                        onBlur={onBlur}
+                        isInvalid={touched.imageUrl && !!formErrors.imageUrl}
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.imageUrl}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId='description'>
                     <Form.Label>Description:</Form.Label>
@@ -162,7 +187,14 @@ export default function FighterEdit() {
                         rows={4}
                         value={fighterData.description}
                         onChange={onChange}
+                        onBlur={onBlur}
+                        isInvalid={
+                            touched.description && !!formErrors.description
+                        }
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.description}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Button
                     as={Link}
