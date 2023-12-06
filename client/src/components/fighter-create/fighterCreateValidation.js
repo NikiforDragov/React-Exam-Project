@@ -1,4 +1,4 @@
-const urlPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+const imageUrlPattern = /^https:\/\//
 
 export default function fighterCreateValidation(values) {
     const errors = {};
@@ -33,6 +33,12 @@ export default function fighterCreateValidation(values) {
         errors.category = 'Category Style is required';
     } else if (values.category.length < 3) {
         errors.category = 'Min 3 characters!';
+    }
+
+    if (!values.imageUrl) {
+        errors.imageUrl = 'Image URL is required';
+    } else if (!imageUrlPattern.test(values.imageUrl)) {
+        errors.imageUrl = 'Image Url must start with https://';
     }
 
     return errors
