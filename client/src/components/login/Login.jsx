@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm';
 import AuthContext from '../../contexts/authContext';
 
 import { loginFormKeys } from '../../constants/formKeys';
+import loginValidation from './loginValidation';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -14,14 +15,20 @@ import styles from './Login.module.css';
 
 export default function Login() {
     useEffect(() => {
-		document.title = 'Login';
-	}, []);
+        document.title = 'Login';
+    }, []);
 
     const { loginSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-        [loginFormKeys.email]: '',
-        [loginFormKeys.password]: '',
-    });
+
+
+    const { values, formErrors, touched, onChange, onBlur, onSubmit } = useForm(
+        loginSubmitHandler,
+        {
+            [loginFormKeys.email]: '',
+            [loginFormKeys.password]: '',
+        },
+        loginValidation
+    );
 
     return (
         <Container className={styles.formContainer}>
@@ -32,9 +39,14 @@ export default function Login() {
                         type='email'
                         name={loginFormKeys.email}
                         value={values.email}
+                        onBlur={onBlur}
                         onChange={onChange}
                         placeholder='Enter email'
+                        isInvalid={touched.email && !!formErrors.email}
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.email}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formPassword'>
                     <Form.Label>Password</Form.Label>
@@ -42,9 +54,14 @@ export default function Login() {
                         type='password'
                         name={loginFormKeys.password}
                         value={values.password}
+                        onBlur={onBlur}
                         onChange={onChange}
                         placeholder='Password'
+                        isInvalid={touched.password && !!formErrors.password}
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.password}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <div className={styles.buttonContainer}>
                     <Button variant='dark' type='submit'>

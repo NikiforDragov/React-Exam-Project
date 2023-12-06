@@ -1,3 +1,5 @@
+export const emailPattern = /\S+@\S+\.\S+/;
+
 export const loginFormKeys = {
     email: 'email',
     password: 'password',
