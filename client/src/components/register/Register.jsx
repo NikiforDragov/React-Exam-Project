@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import AuthContext from '../../contexts/authContext';
 import { registerFormKeys } from '../../constants/formKeys';
+import registerValidation from './registerValidation';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -13,15 +14,19 @@ import styles from './Register.module.css';
 
 export default function Register() {
     useEffect(() => {
-		document.title = 'Register';
-	}, []);
+        document.title = 'Register';
+    }, []);
 
     const { registerSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
-        [registerFormKeys.email]: '',
-        [registerFormKeys.password]: '',
-        [registerFormKeys.confirmPassword]: '',
-    });
+    const { values, formErrors, touched, onChange, onBlur, onSubmit } = useForm(
+        registerSubmitHandler,
+        {
+            [registerFormKeys.email]: '',
+            [registerFormKeys.password]: '',
+            [registerFormKeys.confirmPassword]: '',
+        },
+        registerValidation
+    );
 
     return (
         <Container className={styles.formContainer}>
@@ -34,7 +39,12 @@ export default function Register() {
                         placeholder='Enter email'
                         value={values.email}
                         onChange={onChange}
+                        onBlur={onBlur}
+                        isInvalid={touched.email && !!formErrors.email}
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.email}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formPassword'>
                     <Form.Label>Password</Form.Label>
@@ -44,7 +54,12 @@ export default function Register() {
                         placeholder='Password'
                         value={values.password}
                         onChange={onChange}
+                        onBlur={onBlur}
+                        isInvalid={touched.password && !!formErrors.password}
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.password}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formConfirmPassword'>
                     <Form.Label>Confirm Password</Form.Label>
@@ -54,7 +69,15 @@ export default function Register() {
                         placeholder='Confirm Password'
                         value={values.confirmPassword}
                         onChange={onChange}
+                        onBlur={onBlur}
+                        isInvalid={
+                            touched.confirmPassword &&
+                            !!formErrors.confirmPassword
+                        }
                     />
+                    <Form.Control.Feedback type='invalid'>
+                        {formErrors.confirmPassword}
+                    </Form.Control.Feedback>
                 </Form.Group>
                 <div className={styles.buttonContainer}>
                     <Button variant='dark' type='submit'>
