@@ -119,7 +119,12 @@ export default function FighterCreate() {
                             value={fighter.country}
                             onChange={onChange}
                             placeholder='Country'
+                            onBlur={onBlur}
+                            isInvalid={touched.country && !!formErrors.country}
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.country}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group
                         as={Col}

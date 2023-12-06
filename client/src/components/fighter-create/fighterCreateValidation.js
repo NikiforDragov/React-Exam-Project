@@ -15,5 +15,11 @@ export default function fighterCreateValidation(values) {
         errors.age = 'Max 110 years!';
     }
 
+    if (!values.country) {
+        errors.country = 'Country is required';
+    } else if (values.country.length < 3) {
+        errors.country = 'Min 3 characters!';
+    }
+
     return errors
 }
