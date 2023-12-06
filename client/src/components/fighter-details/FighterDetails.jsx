@@ -15,29 +15,37 @@ import styles from './FighterDetails.module.css';
 export default function FighterDetails() {
     const [fighter, setFighter] = useState({});
     const [isOwner, setIsOwner] = useState(false);
+    const [canLike, setCanLike] = useState(true);
     const { isAuthenticated } = useContext(AuthContext);
     const { userId } = useContext(AuthContext);
     const { fighterId } = useParams();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
     useEffect(() => {
-		document.title = 'Details';
-	}, []);
-    
+        document.title = 'Details';
+    }, []);
+
     useEffect(() => {
         fighterService.getOne(fighterId).then((result) => {
             setFighter(result);
             setIsOwner(userId === result._ownerId);
-            // console.log(result)
         });
     }, [fighterId]);
+
+    const addLikeHandler = () => {
+        setCanLike(false);
+    };
 
     const toggleDeleteModal = () => setShowDeleteModal(!showDeleteModal);
 
     return (
         <Container className={styles.cardContainer}>
             <Card className={styles.card}>
-                <Card.Img className={styles.cardImage} variant='top' src={fighter.imageUrl} />
+                <Card.Img
+                    className={styles.cardImage}
+                    variant='top'
+                    src={fighter.imageUrl}
+                />
                 <Card.Body>
                     <Card.Title>{fighter.fighterName}</Card.Title>
                     <Card.Text>{fighter.description}</Card.Text>
@@ -81,14 +89,24 @@ export default function FighterDetails() {
                                 </Button>
                             </>
                         ) : (
-                            <Button
-                                variant='dark'
-                                className={styles.button}
-                                as={Link}
-                                to={`/`}
-                            >
-                                Like
-                            </Button>
+                            <>
+                                {canLike ? (
+                                    <Button
+                                        variant='dark'
+                                        onClick={addLikeHandler}
+                                        className={styles.button}
+                                    >
+                                        Like
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        variant='dark'
+                                        className={styles.button}
+                                    >
+                                        Already Liked
+                                    </Button>
+                                )}
+                            </>
                         ))}
                 </Card.Body>
             </Card>
