@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm';
+import fighterEditValidation from './fighterEditValidation';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -29,8 +30,8 @@ export default function FighterEdit() {
     const navigate = useNavigate();
 
     useEffect(() => {
-		document.title = 'Edit';
-	}, []);
+        document.title = 'Edit';
+    }, []);
 
     useEffect(() => {
         fighterService
@@ -52,10 +53,18 @@ export default function FighterEdit() {
 
     const {
         values: fighterData,
+        formErrors,
+        touched,
         onChange,
+        onBlur,
         onSubmit,
+        reset,
         setChangedInitialValues,
-    } = useForm(editFighterSubmitHandler, formInitialState);
+    } = useForm(
+        editFighterSubmitHandler,
+        formInitialState,
+        fighterEditValidation
+    );
 
     return (
         <Container className={styles.formContainer}>
@@ -76,7 +85,14 @@ export default function FighterEdit() {
                             placeholder='Fighter name'
                             value={fighterData.fighterName}
                             onChange={onChange}
+                            onBlur={onBlur}
+                            isInvalid={
+                                touched.fighterName && !!formErrors.fighterName
+                            }
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.fighterName}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='age'>
                         <Form.Label>Age:</Form.Label>
@@ -86,7 +102,12 @@ export default function FighterEdit() {
                             placeholder='Age'
                             value={fighterData.age}
                             onChange={onChange}
+                            onBlur={onBlur}
+                            isInvalid={touched.age && !!formErrors.age}
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.age}
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} className='mb-3' controlId='country'>
                         <Form.Label>Country:</Form.Label>
