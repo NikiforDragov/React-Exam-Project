@@ -153,7 +153,12 @@ export default function FighterCreate() {
                             value={fighter.category}
                             onChange={onChange}
                             placeholder='Category'
+                            onBlur={onBlur}
+                            isInvalid={touched.category && !!formErrors.category}
                         />
+                        <Form.Control.Feedback type='invalid'>
+                            {formErrors.category}
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Row>
                 <Form.Group className='mb-3' controlId='imageUrl'>
@@ -164,7 +169,12 @@ export default function FighterCreate() {
                         value={fighter.imageUrl}
                         onChange={onChange}
                         placeholder='https://'
+                        onBlur={onBlur}
+                        isInvalid={touched.imageUrl && !!formErrors.imageUrl}
                     />
+                    <Form.Control.Feedback type='invalid'>
+                            {formErrors.imageUrl}
+                        </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId='description'>
                     <Form.Label>Description:</Form.Label>

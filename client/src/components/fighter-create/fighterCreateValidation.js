@@ -1,3 +1,5 @@
+const urlPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/
+
 export default function fighterCreateValidation(values) {
     const errors = {};
 
@@ -25,6 +27,12 @@ export default function fighterCreateValidation(values) {
         errors.fightingStyle = 'Fighting Style is required';
     } else if (values.fightingStyle.length < 3) {
         errors.fightingStyle = 'Min 3 characters!';
+    }
+
+    if (!values.category) {
+        errors.category = 'Category Style is required';
+    } else if (values.category.length < 3) {
+        errors.category = 'Min 3 characters!';
     }
 
     return errors
