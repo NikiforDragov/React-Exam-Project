@@ -1,6 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import ErrorAlert from '../error-alert/ErrorAlert';
+
 import useForm from '../../hooks/useForm';
 import AuthContext from '../../contexts/authContext';
 
@@ -18,8 +20,7 @@ export default function Login() {
         document.title = 'Login';
     }, []);
 
-    const { loginSubmitHandler } = useContext(AuthContext);
-
+    const { loginSubmitHandler, serverError } = useContext(AuthContext);
 
     const { values, formErrors, touched, onChange, onBlur, onSubmit } = useForm(
         loginSubmitHandler,
@@ -33,6 +34,7 @@ export default function Login() {
     return (
         <Container className={styles.formContainer}>
             <Form className={styles.form} onSubmit={onSubmit}>
+                {serverError && <ErrorAlert ErrorMessage={serverError} />}
                 <Form.Group className='mb-3' controlId='formEmail'>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control

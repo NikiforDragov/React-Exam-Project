@@ -6,6 +6,7 @@ import * as authService from '../services/authService';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+    const [serverError, setServerError] = useState(null);
     const navigate = useNavigate();
     const [auth, setAuth] = useState(() => {
         localStorage.removeItem('accessToken');
@@ -13,25 +14,27 @@ export const AuthProvider = ({ children }) => {
     });
 
     const loginSubmitHandler = async ({ email, password }) => {
-        // try {
+        try {
         const result = await authService.login(email, password);
         setAuth(result);
         localStorage.setItem('accessToken', result.accessToken);
         navigate('/');
-        // } catch (error) {
-        //     console.error('Login failed:', error);
-        // }
+        } catch (error) {
+            console.error('Login failed:', error);
+            setServerError(error.message)
+        }
     };
 
     const registerSubmitHandler = async ({ email, password }) => {
-        // try {
+        try {
         const result = await authService.register(email, password);
         setAuth(result);
         localStorage.setItem('accessToken', result.accessToken);
         navigate('/');
-        //     } catch (error) {
-        //         console.error('Register failed:', error);
-        //     }
+            } catch (error) {
+                console.error('Register failed:', error);
+                setServerError(error.message)
+            }
     };
 
     const logoutHandler = () => {
@@ -43,6 +46,7 @@ export const AuthProvider = ({ children }) => {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        serverError,
         userId: auth._id,
         email: auth.email,
         isAuthenticated: !!auth.accessToken,
