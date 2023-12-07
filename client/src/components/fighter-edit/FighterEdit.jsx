@@ -58,7 +58,6 @@ export default function FighterEdit() {
         onChange,
         onBlur,
         onSubmit,
-        reset,
         setChangedInitialValues,
     } = useForm(
         editFighterSubmitHandler,
