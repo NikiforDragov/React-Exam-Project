@@ -1,6 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import ErrorAlert from '../error-alert/ErrorAlert';
+
 import useForm from '../../hooks/useForm';
 import AuthContext from '../../contexts/authContext';
 import { registerFormKeys } from '../../constants/formKeys';
