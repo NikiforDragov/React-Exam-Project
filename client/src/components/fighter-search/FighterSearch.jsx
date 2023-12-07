@@ -12,10 +12,20 @@ import FighterList from '../fighter-list/FighterList';
 
 export default function Search() {
     useEffect(() => {
-		document.title = 'Search';
-	}, []);
+        document.title = 'Search';
+    }, []);
 
     const [searchedFighter, setSearchedFighter] = useState([]);
+
+    const searchValidate = (values) => {
+        const errors = {};
+
+        if (!values.fighterName) {
+            errors.fighterName = 'Search param is required!';
+        }
+
+        return errors;
+    };
 
     const searchHandler = async () => {
         if (values.fighterName !== '') {
@@ -26,9 +36,13 @@ export default function Search() {
         }
     };
 
-    const { values, onChange, onSubmit } = useForm(searchHandler, {
-        fighterName: '',
-    });
+    const {values, formErrors, touched, onChange, onBlur, onSubmit} = useForm(
+        searchHandler,
+        {
+            fighterName: '',
+        },
+        searchValidate
+    );
     return (
         <>
             <Container className={styles.formContainer}>
@@ -41,6 +55,8 @@ export default function Search() {
                         placeholder='Search by Name'
                         value={values.fighterName}
                         onChange={onChange}
+                        onBlur={onBlur}
+                        isInvalid={touched.fighterName && !!formErrors.fighterName}
                     />
                     <Button type='submit' variant='secondary'>
                         Search
