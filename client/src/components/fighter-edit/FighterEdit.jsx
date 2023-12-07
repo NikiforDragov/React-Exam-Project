@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
+
+import ErrorAlert from '../error-alert/ErrorAlert';
 
 import useForm from '../../hooks/useForm';
 import fighterEditValidation from './fighterEditValidation';
@@ -26,6 +28,7 @@ const formInitialState = {
 };
 
 export default function FighterEdit() {
+    const [serverError, setServerError] = useState(null);
     const { fighterId } = useParams();
     const navigate = useNavigate();
 
@@ -39,7 +42,10 @@ export default function FighterEdit() {
             .then((fighterData) => {
                 setChangedInitialValues(fighterData);
             })
-            .catch((err) => console.error(err.message));
+            .catch((error) => {
+                console.error(error.message)
+                setServerError(error.message)
+            });
     }, [fighterId]);
 
     const editFighterSubmitHandler = async () => {
@@ -47,7 +53,8 @@ export default function FighterEdit() {
             await fighterService.edit(fighterId, fighterData);
             navigate(`/fighters/${fighterId}/details`);
         } catch (error) {
-            console.err(err.message);
+            console.error(error.message);
+            setServerError(error.message)
         }
     };
 
@@ -71,6 +78,12 @@ export default function FighterEdit() {
                 <h1>
                     Edit <Badge bg='secondary'>Fighter</Badge>
                 </h1>
+                {serverError && (
+                    <ErrorAlert
+                        ErrorMessage={serverError}
+                        onClose={() => setServerError(null)}
+                    />
+                )}
                 <Row className='mb-3'>
                     <Form.Group
                         as={Col}
