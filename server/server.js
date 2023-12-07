@@ -1389,6 +1389,8 @@
                 "_createdOn": 1701803415081,
                 "_id": "cab59d75-37ca-42e6-8d5b-91ce2866222a"
             }
+        },
+        likes: {
         }
     };
     var rules$1 = {
