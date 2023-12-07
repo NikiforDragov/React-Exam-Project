@@ -8,13 +8,16 @@ export default function Profile() {
     const { userId } = useContext(AuthContext);
 
     useEffect(() => {
-		document.title = 'My Fighters';
-	}, []);
+        document.title = 'My Fighters';
+    }, []);
 
     useEffect(() => {
         fighterService
             .getAllByOwner(userId)
-            .then((result) => setMyFighters(result));
+            .then((result) => setMyFighters(result))
+            .catch((error) => {
+                console.error('Error fetching fighters:', error);
+            });
     }, [userId]);
 
     return <FighterList fighters={myFighters} />;

@@ -26,10 +26,15 @@ export default function FighterDetails() {
     }, []);
 
     useEffect(() => {
-        fighterService.getOne(fighterId).then((result) => {
-            setFighter(result);
-            setIsOwner(userId === result._ownerId);
-        });
+        fighterService
+            .getOne(fighterId)
+            .then((result) => {
+                setFighter(result);
+                setIsOwner(userId === result._ownerId);
+            })
+            .catch((error) => {
+                console.error('Error fetching fighter details:', error);
+            });
     }, [fighterId]);
 
     const addLikeHandler = () => {
