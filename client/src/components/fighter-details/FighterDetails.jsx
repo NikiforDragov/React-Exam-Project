@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import * as fighterService from '../../services/fighterService';
+import * as likesService from '../../services/likesService';
 import AuthContext from '../../contexts/authContext';
 
 import Container from 'react-bootstrap/esm/Container';
@@ -14,6 +15,7 @@ import styles from './FighterDetails.module.css';
 
 export default function FighterDetails() {
     const [fighter, setFighter] = useState({});
+    const [likes, setLikes] = useState(0);
     const [isOwner, setIsOwner] = useState(false);
     const [canLike, setCanLike] = useState(true);
     const { isAuthenticated } = useContext(AuthContext);
@@ -35,10 +37,33 @@ export default function FighterDetails() {
             .catch((error) => {
                 console.error('Error fetching fighter details:', error);
             });
-    }, [fighterId]);
 
-    const addLikeHandler = () => {
-        setCanLike(false);
+        likesService
+            .getLikesForFighter(fighterId)
+            .then((count) => {
+                setLikes(count)
+            })
+            .catch((error) => {
+                console.error('Error fetching likes:', error);
+            });
+
+        likesService
+            .canLike(fighterId, userId)
+            .then((canLike) => {
+                setCanLike(canLike === 0);
+            })
+            .catch((error) => {
+                console.error(error.message);
+            });
+    }, [fighterId, canLike]);
+
+    const addLikeHandler = async () => {
+        try {
+            await likesService.likeFighter(fighterId);
+            setCanLike(false);
+        } catch (error) {
+            console.error(error.message);
+        }
     };
 
     const toggleDeleteModal = () => setShowDeleteModal(!showDeleteModal);
@@ -52,7 +77,7 @@ export default function FighterDetails() {
                     src={fighter.imageUrl}
                 />
                 <Card.Body>
-                    <Card.Title>{fighter.fighterName}</Card.Title>
+                    <Card.Title>{fighter.fighterName} <i className="fa-solid fa-heart"></i>{likes}</Card.Title>
                     <Card.Text>{fighter.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className='list-group-flush'>
@@ -101,7 +126,7 @@ export default function FighterDetails() {
                                         onClick={addLikeHandler}
                                         className={styles.button}
                                     >
-                                        Like
+                                        Like <i className="fa-solid fa-heart"></i>
                                     </Button>
                                 ) : (
                                     <Button
