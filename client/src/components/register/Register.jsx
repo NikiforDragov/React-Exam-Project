@@ -19,7 +19,7 @@ export default function Register() {
         document.title = 'Register';
     }, []);
 
-    const { registerSubmitHandler, serverError } = useContext(AuthContext);
+    const { registerSubmitHandler, serverError, resetServerError } = useContext(AuthContext);
     const { values, formErrors, touched, onChange, onBlur, onSubmit } = useForm(
         registerSubmitHandler,
         {
@@ -33,7 +33,7 @@ export default function Register() {
     return (
         <Container className={styles.formContainer}>
             <Form className={styles.form} onSubmit={onSubmit}>
-                {serverError && <ErrorAlert ErrorMessage={serverError} />}
+            {serverError && <ErrorAlert ErrorMessage={serverError} onClose={resetServerError} />}
                 <Form.Group className='mb-3' controlId='formEmail'>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control

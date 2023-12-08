@@ -42,10 +42,15 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('accessToken');
     };
 
+    const resetServerError = () => {
+        setServerError(null)
+    }
+
     const values = {
         loginSubmitHandler,
         registerSubmitHandler,
         logoutHandler,
+        resetServerError,
         serverError,
         userId: auth._id,
         email: auth.email,
