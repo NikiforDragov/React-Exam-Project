@@ -8,11 +8,21 @@
     text-align: center;
     width: 1000px;
 }
-
+.cardHeader {
+ background-color: red;   
+}
 .cardBody {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('https://t4.ftcdn.net/jpg/05/92/63/57/360_F_592635785_Xparo23BaSP08svGdSAk8NLUrNUeQ3eT.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.cardBody h4 {
+    color: white;
 }
 
 .cardHeader h1 {
